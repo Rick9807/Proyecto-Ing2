@@ -748,6 +748,7 @@ System.out.println("Resultado"+encontrados);
         txtPro2.setText("");
         txtS.setText("");
         txtTpagar.setText("");
+        tpagar=0;
         
     } 
        
