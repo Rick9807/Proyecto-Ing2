@@ -109,7 +109,7 @@ public class Em_Registro_Ventas extends javax.swing.JFrame {
         });
         getContentPane().add(btnBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 100, 30));
 
-        btnSalir.setText("Salir");
+        btnSalir.setText("Regresar");
         btnSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

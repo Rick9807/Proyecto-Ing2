@@ -89,7 +89,7 @@ public class Empleado_Ad_Ventas extends javax.swing.JFrame {
         });
         getContentPane().add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 120, 120));
 
-        btnExit.setText("Salir");
+        btnExit.setText("Regresar");
         btnExit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

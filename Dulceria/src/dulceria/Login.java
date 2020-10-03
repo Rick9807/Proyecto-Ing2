@@ -156,7 +156,8 @@ JOptionPane.showMessageDialog(null,"Debes llenar todos los campos");
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-       System.exit(0);
+       if(JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea salir?") == 0)
+            System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
   

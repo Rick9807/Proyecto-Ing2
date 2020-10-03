@@ -357,7 +357,7 @@ txt.setText(ss);
 
         jLabel4.setText("Total a pagar");
 
-        jButton8.setText("Salir");
+        jButton8.setText("Regresar");
         jButton8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -748,7 +748,6 @@ System.out.println("Resultado"+encontrados);
         txtPro2.setText("");
         txtS.setText("");
         txtTpagar.setText("");
-        tpagar=0;
         
     } 
        

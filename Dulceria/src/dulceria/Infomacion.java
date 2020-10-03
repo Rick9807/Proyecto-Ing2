@@ -77,7 +77,7 @@ public class Infomacion extends javax.swing.JFrame {
         jLabel2.setText("Acerca de este Software");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, 20));
 
-        btnE.setText("Volver");
+        btnE.setText("Regresar");
         btnE.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

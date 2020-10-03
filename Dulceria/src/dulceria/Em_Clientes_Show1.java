@@ -98,7 +98,7 @@ public class Em_Clientes_Show1 extends javax.swing.JFrame {
         jLabel2.setText("Clientes");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, -1, -1));
 
-        jButton1.setText("Salir");
+        jButton1.setText("Regresar");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

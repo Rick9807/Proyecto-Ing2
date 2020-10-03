@@ -1,10 +1,11 @@
-
-
-package dulceria;
+//GEN-FIRST:event_jButton1ActionPerformed
+package dulceria;//GEN-LAST:event_jButton1ActionPerformed
 
 import java.sql.*;
 import Clases.Conexion;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showInputDialog;
 import javax.swing.WindowConstants;
 
 
@@ -41,7 +42,7 @@ public class Empleados extends javax.swing.JFrame {
 
     
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         btnVentas = new javax.swing.JButton();
@@ -158,41 +159,43 @@ public class Empleados extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 450));
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
+    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {                                             
         
         dispose();
       new  Empleados_Productos().setVisible(true);
-    }//GEN-LAST:event_btnProductosActionPerformed
+    }                                            
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-                dispose();
-                new Login().setVisible(true);
-    }//GEN-LAST:event_btnExitActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) { 
+        if(JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea cerrar sesion?") == 0){
+            dispose();
+            new Login().setVisible(true);
+        }
+    }                                       
 
-    private void btnEmplActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmplActionPerformed
+    private void btnEmplActionPerformed(java.awt.event.ActionEvent evt) {                                        
         dispose();
                 new Emp_Usuarios_Busq().setVisible(true);
         
-    }//GEN-LAST:event_btnEmplActionPerformed
+    }                                       
 
-    private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
+    private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {                                          
         dispose();
         new Empleado_Ad_Ventas().setVisible(true);
         
         
-    }//GEN-LAST:event_btnVentasActionPerformed
+    }                                         
 
-    private void btnCongfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCongfActionPerformed
+    private void btnCongfActionPerformed(java.awt.event.ActionEvent evt) {                                         
        dispose();
         new EmAd_Confg1().setVisible(true);
-    }//GEN-LAST:event_btnCongfActionPerformed
+    }                                        
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         dispose();
         new Em_Pro_Mostrar().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }                                        
 
     
     public static void main(String args[]) {
@@ -204,7 +207,7 @@ public class Empleados extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton btnCongf;
     private javax.swing.JButton btnEmpl;
     private javax.swing.JButton btnExit;
@@ -219,6 +222,6 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 
 }

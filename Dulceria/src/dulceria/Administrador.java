@@ -4,6 +4,7 @@ package dulceria;
 import javax.swing.ImageIcon;
 import java.sql.*;
 import Clases.Conexion;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 public class Administrador extends javax.swing.JFrame {
@@ -165,8 +166,10 @@ public class Administrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSesionActionPerformed
-                dispose();
-                new Login().setVisible(true);
+        if(JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea cerrar sesion?") == 0){
+            dispose();
+            new Login().setVisible(true);
+        }
     }//GEN-LAST:event_btnSesionActionPerformed
 
     private void btnProdcutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdcutosActionPerformed

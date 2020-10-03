@@ -183,7 +183,7 @@ System.out.println(V+1);
         });
         getContentPane().add(btnAdd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 100, 100));
 
-        jButton1.setText("Salir");
+        jButton1.setText("Regresar");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

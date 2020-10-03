@@ -105,7 +105,7 @@ int ID;
         getContentPane().add(btnBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 120, 120));
 
         btnEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnEx.setText("Salir");
+        btnEx.setText("Regresar");
         btnEx.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnEx.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

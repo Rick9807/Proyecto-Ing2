@@ -72,7 +72,7 @@ public class Admin_Empleados extends javax.swing.JFrame {
         getContentPane().add(btnAdd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 120, 120));
 
         btnExit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnExit.setText("Salir");
+        btnExit.setText("Regresar");
         btnExit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

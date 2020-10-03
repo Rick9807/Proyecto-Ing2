@@ -108,7 +108,7 @@ public class Ad_Proveedores extends javax.swing.JFrame {
         getContentPane().add(txtComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 210, 30));
 
         btnExit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnExit.setText("Salir");
+        btnExit.setText("Regresar");
         btnExit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,90 +134,55 @@ public class Ad_Proveedores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-int validacion=0;
-
-    String  Nombre, Correo, Telefono;
-    
-
-Nombre= txtNom.getText().trim();
-Correo = txtCorreo.getText().trim();
-Telefono = txtTel.getText().trim();
-Compania = txtComp.getText().trim();
+        String  Nombre, Correo, Telefono;
+        Nombre= txtNom.getText().trim();
+        Correo = txtCorreo.getText().trim();
+        Telefono = txtTel.getText().trim();
+        Compania = txtComp.getText().trim();
 
 
-if(Nombre.equals("")){
-    validacion++;
-JOptionPane.showMessageDialog(null, "El campo Nombre esta vacio");
-    }
-if(Correo.equals("")){
-  validacion++;
-    JOptionPane.showMessageDialog(null, "El campo Correo esta vacio");
-    }
-if(Telefono.equals("")){
-  validacion++;
-JOptionPane.showMessageDialog(null, "El campo Télefono esta vacio");
-    }
-if(Compania.equals("")){
-  validacion++;
-JOptionPane.showMessageDialog(null, "El campo Compañia esta vacio");
-    }
-
-try {
-           Connection cn = Conexion.conectar();
-        PreparedStatement pat = cn.prepareStatement(
-            "select compania from proovedores where compania= '" + Compania+ "'");
-             ResultSet rs = pat.executeQuery();
-             if(rs.next()){
-             txtComp.setBackground(Color.yellow);
-             JOptionPane.showMessageDialog(null," El Nombre ingresado pertence a otro Proveedor");
-             txtComp.setBackground(Color.WHITE);
-             cn.close();
-             
-             }else{
-             
-                 if(validacion == 0){
-                 
+        if(Nombre.equals("") || Correo.equals("") || Telefono.equals("") || Compania.equals("")){
+            JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos");
+        }else{
+        try {
+            Connection cn = Conexion.conectar();
+            PreparedStatement pat = cn.prepareStatement(
+                "select compania from proovedores where compania= '" + Compania + "'");
+                 ResultSet rs = pat.executeQuery();
+                 if(rs.next()){
+                 txtComp.setBackground(Color.yellow);
+                 JOptionPane.showMessageDialog(null," El Nombre ingresado pertence a otro Proveedor");
+                 txtComp.setBackground(Color.WHITE);
+                 cn.close();
+                 }else{
                      try{
-                     
-                      PreparedStatement pat2 = cn.prepareStatement(
-                        "insert into proovedores values(?,?,?,?,?,?)");
-                      
-                        pat2.setInt(1,0);
-                        pat2.setString(2,Nombre);
-                        pat2.setString(3,Correo);
-                        pat2.setString(4,Telefono);
-                        pat2.setString(5,Compania);
-                        pat2.setInt(6,id);
-                        
-                     
-//                         
-                    pat2.executeUpdate();
-                    cn.close();
-                    
-                    Limpiar();
-                   
-                    
-                    JOptionPane.showMessageDialog(null,"Proveedor almacenado con exito");
-                   
-                  
-                        }catch(SQLException e){
-                            
-                     System.err.println("Error al registrar Proveedor" + e);
-                      JOptionPane.showMessageDialog(null," ERROR al registrar, contacte al administrador ");
-                     }
-                     
-                    }else{
-                  JOptionPane.showMessageDialog(null,"Debes de llenar todos los campos ");
-                 
-                    }
-              }
-             
-            }catch(SQLException e){
-        System.err.println("Error al validar Nombre" + e);
-          JOptionPane.showMessageDialog(null," ERROR al comparar Proveedor, contacte al administrador ");
-            }
+                          PreparedStatement pat2 = cn.prepareStatement(
+                            "insert into proovedores values(?,?,?,?,?,?)");
 
-       
+                            pat2.setInt(1,0);
+                            pat2.setString(2,Nombre);
+                            pat2.setString(3,Correo);
+                            pat2.setString(4,Telefono);
+                            pat2.setString(5,Compania);
+                            pat2.setInt(6,id);
+        //                         
+                        pat2.executeUpdate();
+                        cn.close();
+
+                        Limpiar();
+
+                        JOptionPane.showMessageDialog(null,"Proveedor almacenado con exito");
+
+                        }catch(SQLException e){
+                            System.err.println("Error al registrar Proveedor" + e);
+                            JOptionPane.showMessageDialog(null," ERROR al registrar, contacte al administrador ");
+                         }
+                  }
+            }catch(SQLException e){
+                System.err.println("Error al validar Nombre" + e);
+                JOptionPane.showMessageDialog(null," ERROR al comparar Proveedor, contacte al administrador ");
+            }
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     /**

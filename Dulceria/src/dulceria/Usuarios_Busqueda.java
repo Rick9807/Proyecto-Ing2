@@ -97,7 +97,7 @@ public class Usuarios_Busqueda extends javax.swing.JFrame {
         jScrollPane1.getAccessibleContext().setAccessibleName("");
 
         btnExit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnExit.setText("Salir");
+        btnExit.setText("Regresar");
         btnExit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -100,7 +100,7 @@ public class Emp_Usuarios_Busq extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 800, 240));
 
         btnEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnEx.setText("Salir");
+        btnEx.setText("Regresar");
         btnEx.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnEx.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

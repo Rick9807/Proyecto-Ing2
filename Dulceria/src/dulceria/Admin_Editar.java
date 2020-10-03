@@ -21,9 +21,7 @@ int ID;
         user = Login.user;
         setTitle("Modificar Empleados - Sesion de "+ user);
         
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
-        
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);           
     }
 
     /**
@@ -152,6 +150,7 @@ int ID;
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user_theinformation_788.png"))); // NOI18N
         btnEdit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEdit.setEnabled(false);
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
@@ -161,6 +160,7 @@ int ID;
 
         btnDelate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user_eliminate_1102.png"))); // NOI18N
         btnDelate.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDelate.setEnabled(false);
         btnDelate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDelateActionPerformed(evt);
@@ -184,12 +184,12 @@ int ID;
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, -1, -1));
 
         txtNom1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txtNom1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 230, 30));
+        getContentPane().add(txtNom1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 300, 30));
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Empleado");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        jLabel13.setText("Nombre del Empleado");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 170, -1));
 
         btnBus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnBus.setText("Buscar");
@@ -199,10 +199,10 @@ int ID;
                 btnBusActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 100, 30));
+        getContentPane().add(btnBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 100, 30));
 
         btnEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnEx.setText("Salir");
+        btnEx.setText("Regresar");
         btnEx.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnEx.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,7 +225,6 @@ int ID;
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
        int puesto_cmb, sexo , validacion =0;
        String edad ,nombre, apellidos, telefono,correo , contrasena, permisos_string ="", permisos="";
-       
        
        correo = txtCorreo.getText().trim();
         contrasena = txtPass.getText().trim();
