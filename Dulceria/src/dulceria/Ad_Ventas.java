@@ -63,7 +63,10 @@ public class Ad_Ventas extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dulceria/users_844.png"))); // NOI18N
-        btnClientes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnClientes.setBorder(null);
+        btnClientes.setBorderPainted(false);
+        btnClientes.setContentAreaFilled(false);
+        btnClientes.setFocusPainted(false);
         btnClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClientesActionPerformed(evt);
@@ -72,7 +75,10 @@ public class Ad_Ventas extends javax.swing.JFrame {
         getContentPane().add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 120, 120));
 
         btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cashier2_118191 (1).png"))); // NOI18N
-        btnVentas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVentas.setBorder(null);
+        btnVentas.setBorderPainted(false);
+        btnVentas.setContentAreaFilled(false);
+        btnVentas.setFocusPainted(false);
         btnVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentasActionPerformed(evt);
@@ -81,7 +87,10 @@ public class Ad_Ventas extends javax.swing.JFrame {
         getContentPane().add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 120, 120));
 
         btnMostrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dulceria/list_notes_930.png"))); // NOI18N
-        btnMostrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnMostrar.setBorder(null);
+        btnMostrar.setBorderPainted(false);
+        btnMostrar.setContentAreaFilled(false);
+        btnMostrar.setFocusPainted(false);
         btnMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMostrarActionPerformed(evt);
@@ -89,14 +98,19 @@ public class Ad_Ventas extends javax.swing.JFrame {
         });
         getContentPane().add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 120, 120));
 
-        btnExit.setText("Regresar");
-        btnExit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_norm.png"))); // NOI18N
+        btnExit.setBorder(null);
+        btnExit.setBorderPainted(false);
+        btnExit.setContentAreaFilled(false);
+        btnExit.setFocusPainted(false);
+        btnExit.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_press.png"))); // NOI18N
+        btnExit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_roll.png"))); // NOI18N
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 100, 30));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 110, 40));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));

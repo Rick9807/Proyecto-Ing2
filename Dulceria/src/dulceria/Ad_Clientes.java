@@ -105,14 +105,20 @@ public static String user_update = "";
         txtbs.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtbs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 270, 30));
 
-        btnBus.setText("Buscar");
-        btnBus.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBus.setForeground(new java.awt.Color(0, 0, 255));
+        btnBus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_norm.png"))); // NOI18N
+        btnBus.setBorder(null);
+        btnBus.setBorderPainted(false);
+        btnBus.setContentAreaFilled(false);
+        btnBus.setFocusPainted(false);
+        btnBus.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_press.png"))); // NOI18N
+        btnBus.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_roll.png"))); // NOI18N
         btnBus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBusActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 100, 30));
+        getContentPane().add(btnBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 110, 40));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,7 +155,10 @@ public static String user_update = "";
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/addusergroup_1251.png"))); // NOI18N
-        btnAdd.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAdd.setBorder(null);
+        btnAdd.setBorderPainted(false);
+        btnAdd.setContentAreaFilled(false);
+        btnAdd.setFocusPainted(false);
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
@@ -158,8 +167,11 @@ public static String user_update = "";
         getContentPane().add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 100, 100));
 
         btnMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/writer_person_people_man_you_1633.png"))); // NOI18N
-        btnMod.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnMod.setBorder(null);
+        btnMod.setBorderPainted(false);
+        btnMod.setContentAreaFilled(false);
         btnMod.setEnabled(false);
+        btnMod.setFocusPainted(false);
         btnMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModActionPerformed(evt);
@@ -168,8 +180,11 @@ public static String user_update = "";
         getContentPane().add(btnMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, 100, 100));
 
         btnAdd2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user_eliminate_1102.png"))); // NOI18N
-        btnAdd2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAdd2.setBorder(null);
+        btnAdd2.setBorderPainted(false);
+        btnAdd2.setContentAreaFilled(false);
         btnAdd2.setEnabled(false);
+        btnAdd2.setFocusPainted(false);
         btnAdd2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdd2ActionPerformed(evt);
@@ -177,14 +192,20 @@ public static String user_update = "";
         });
         getContentPane().add(btnAdd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 100, 100));
 
-        jButton1.setText("Regresar");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.setForeground(new java.awt.Color(51, 255, 51));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/salir_norm.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/salir_press.png"))); // NOI18N
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_roll.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 100, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 110, 40));
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -202,7 +223,10 @@ public static String user_update = "";
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 330, -1, -1));
 
         btnShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/contactlist_theuser_802.png"))); // NOI18N
-        btnShow.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnShow.setBorder(null);
+        btnShow.setBorderPainted(false);
+        btnShow.setContentAreaFilled(false);
+        btnShow.setFocusPainted(false);
         btnShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowActionPerformed(evt);
@@ -215,8 +239,9 @@ public static String user_update = "";
         jLabel11.setText("Clientes");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
 
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoAdmin-bspline.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 420));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

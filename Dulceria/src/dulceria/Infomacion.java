@@ -77,14 +77,19 @@ public class Infomacion extends javax.swing.JFrame {
         jLabel2.setText("Acerca de este Software");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, 20));
 
-        btnE.setText("Regresar");
-        btnE.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_norm.png"))); // NOI18N
+        btnE.setBorder(null);
+        btnE.setBorderPainted(false);
+        btnE.setContentAreaFilled(false);
+        btnE.setFocusPainted(false);
+        btnE.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_press.png"))); // NOI18N
+        btnE.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_roll.png"))); // NOI18N
         btnE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEActionPerformed(evt);
             }
         });
-        getContentPane().add(btnE, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 100, 30));
+        getContentPane().add(btnE, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 120, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoAdmin.jpeg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 480));

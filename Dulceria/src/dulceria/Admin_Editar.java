@@ -192,24 +192,34 @@ int ID;
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 170, -1));
 
         btnBus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnBus.setText("Buscar");
-        btnBus.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_norm.png"))); // NOI18N
+        btnBus.setBorder(null);
+        btnBus.setBorderPainted(false);
+        btnBus.setContentAreaFilled(false);
+        btnBus.setFocusPainted(false);
+        btnBus.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_press.png"))); // NOI18N
+        btnBus.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_roll.png"))); // NOI18N
         btnBus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBusActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, 100, 30));
+        getContentPane().add(btnBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 120, 40));
 
         btnEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnEx.setText("Regresar");
-        btnEx.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_norm.png"))); // NOI18N
+        btnEx.setBorder(null);
+        btnEx.setBorderPainted(false);
+        btnEx.setContentAreaFilled(false);
+        btnEx.setFocusPainted(false);
+        btnEx.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_press.png"))); // NOI18N
+        btnEx.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_roll.png"))); // NOI18N
         btnEx.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEx, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 100, 30));
+        getContentPane().add(btnEx, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 120, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoAdmin.jpeg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 586, 510));

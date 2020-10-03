@@ -100,14 +100,19 @@ public class Emp_Usuarios_Busq extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 800, 240));
 
         btnEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnEx.setText("Regresar");
-        btnEx.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_norm.png"))); // NOI18N
+        btnEx.setBorder(null);
+        btnEx.setBorderPainted(false);
+        btnEx.setContentAreaFilled(false);
+        btnEx.setFocusPainted(false);
+        btnEx.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_press.png"))); // NOI18N
+        btnEx.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_roll.png"))); // NOI18N
         btnEx.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEx, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 100, 30));
+        getContentPane().add(btnEx, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 100, 40));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
