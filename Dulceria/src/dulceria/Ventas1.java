@@ -374,9 +374,9 @@ txt.setText(ss);
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtTpagar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
+                .addGap(58, 58, 58)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -441,7 +441,8 @@ txt.setText(ss);
         
             guardarVenta();
             guardarDetalle();
-            actualizarStock();            
+            actualizarStock();
+             
             //JOptionPane.showMessageDialog(this, "Se Realizo con Exito");
             nuevo();
             jButton8.setEnabled(true);
@@ -579,8 +580,7 @@ txt.setText(ss);
             modelo.addRow(ob);
             TablaDetalle.setModel(modelo);
             calculatTotal();
-            actualizarStock();
-            
+            //actualizarStock();
             jButton8.setEnabled(false);
             
        }else {
@@ -703,41 +703,71 @@ txt.setText(ss);
             i=i-1;
         }
     }
-   public void actualizarStock() {
+    public void actualizarStock() {
 //          String nombre = "", compania="";
 //               String marca = "", descripcion="";}
-   for (int i = 0; i < modelo.getRowCount(); i++) {
-            
- int enn = 0;
-int resultado =0;
- String dos;
-//   dos =String.valueOf(enn).toString();
-  dos = txtS.getText();
-  System.out.println(dos);// total
-  cantidad = Integer.parseInt(txtCa.getValue().toString());
-  enn = Integer.parseInt(dos);
-resultado= enn - cantidad ;
-System.out.println("Resultado"+resultado);
-System.out.println("Resultado"+encontrados);
 
-           try{
-       Connection cn = Conexion.conectar();
-        PreparedStatement pat = cn.prepareStatement(
-            "update productos set stock=? where codigo_producto= '" +encontrados+ "'");
-             
-   
-        
-        pat.setInt(1,resultado);
-        
-        pat.executeUpdate();
-            cn.close();
-        }catch(Exception e){
-      JOptionPane.showMessageDialog(null,"No se ha podido actualizar el Stock");
-      
+        int fila = TablaDetalle.getRowCount();  //Obtener filas de la Tabla.
+        for(int i=0; i<fila; i++){
+            int codProd = (int) TablaDetalle.getValueAt(i,1); //Obtener valores de la fila i y columna 1 (en esto caso, el codigo del producto).
+            int cantidad = (int) TablaDetalle.getValueAt(i,3); //Obtener valores de la fila i y columna 3 (en esto caso, la cantidad).
+            System.out.println("Resultado codigo: "+codProd);
+            System.out.println("Resultado cantidad: "+cantidad);
+            
+            try{
+                Connection cn = Conexion.conectar(); //Conexión a BD
+                PreparedStatement pat = cn.prepareStatement( //Prepaparar query.
+                    "select stock from productos where codigo_producto = "+codProd+"");  
+                ResultSet rs = pat.executeQuery();
+                if(rs.next()){
+                    int newStock = rs.getInt("stock");
+                    System.out.println(newStock);
+                    newStock = newStock - cantidad;
+                    System.out.println(newStock);
+                    PreparedStatement pat2 = cn.prepareStatement( //Prepaparar query.
+                        "update productos set stock = "+newStock+" where codigo_producto = "+codProd+"");
+                    pat2.executeQuery();
+                    System.out.println("Si pasa");
+                    JOptionPane.showMessageDialog(this, "Stock de "+rs.getString("nombre")+" actualizado!");
+                }
+                cn.close();
+            }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"No se ha podido actualizar el Stock");
+
             }
-   }
-     
+        }
+                
+                
+        /*for (int i = 0; i < fila; i++) {
+            
+            int enn = 0;
+            int resultado =0;
+            String dos;
+        //   dos =String.valueOf(enn).toString();
+            dos = txtS.getText();
+            System.out.println(dos);// total
+            cantidad = Integer.parseInt(txtCa.getValue().toString());
+            enn = Integer.parseInt(dos);
+            resultado= enn - cantidad ;
+            System.out.println("Resultado"+resultado);
+            System.out.println("Resultado"+encontrados);
+
+            try{
+                Connection cn = Conexion.conectar();
+                PreparedStatement pat = cn.prepareStatement(
+                "update productos set stock=? where codigo_producto= '" +encontrados+ "'");
+
+                pat.setInt(1,resultado);
+
+                pat.executeUpdate();
+                cn.close();
+            }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"No se ha podido actualizar el Stock");
+
+            }
+        }*/
     }
+    
        void nuevo(){
         limpiarTabla();
         txtCl1.setText("");
