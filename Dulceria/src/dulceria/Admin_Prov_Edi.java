@@ -68,7 +68,10 @@ public static int Sesion_usuario, Id;
         getContentPane().add(txtComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 210, 30));
 
         btnMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/writer_person_people_man_you_1633.png"))); // NOI18N
-        btnMod.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnMod.setBorder(null);
+        btnMod.setBorderPainted(false);
+        btnMod.setContentAreaFilled(false);
+        btnMod.setFocusPainted(false);
         btnMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModActionPerformed(evt);
@@ -77,7 +80,10 @@ public static int Sesion_usuario, Id;
         getContentPane().add(btnMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 120, 120));
 
         btnMod1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/delete_delete_exit_1577.png"))); // NOI18N
-        btnMod1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnMod1.setBorder(null);
+        btnMod1.setBorderPainted(false);
+        btnMod1.setContentAreaFilled(false);
+        btnMod1.setFocusPainted(false);
         btnMod1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMod1ActionPerformed(evt);
@@ -86,14 +92,19 @@ public static int Sesion_usuario, Id;
         getContentPane().add(btnMod1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 120, 120));
 
         btnExit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnExit.setText("Salir");
-        btnExit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_norm.png"))); // NOI18N
+        btnExit.setBorder(null);
+        btnExit.setBorderPainted(false);
+        btnExit.setContentAreaFilled(false);
+        btnExit.setFocusPainted(false);
+        btnExit.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/salir_press.png"))); // NOI18N
+        btnExit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_roll.png"))); // NOI18N
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 100, 30));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 110, 40));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,14 +150,19 @@ public static int Sesion_usuario, Id;
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 100, -1, -1));
 
         btnBs.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnBs.setText("Buscar");
-        btnBs.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_norm.png"))); // NOI18N
+        btnBs.setBorder(null);
+        btnBs.setBorderPainted(false);
+        btnBs.setContentAreaFilled(false);
+        btnBs.setFocusPainted(false);
+        btnBs.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_press.png"))); // NOI18N
+        btnBs.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_roll.png"))); // NOI18N
         btnBs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBsActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBs, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 100, 30));
+        getContentPane().add(btnBs, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 120, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoAdmin.jpeg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 448));

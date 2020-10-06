@@ -4,6 +4,7 @@ package dulceria;
 import javax.swing.ImageIcon;
 import java.sql.*;
 import Clases.Conexion;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 public class Administrador extends javax.swing.JFrame {
@@ -64,7 +65,10 @@ public class Administrador extends javax.swing.JFrame {
 
         btnEmpleados.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/informationuser.png"))); // NOI18N
-        btnEmpleados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEmpleados.setBorder(null);
+        btnEmpleados.setBorderPainted(false);
+        btnEmpleados.setContentAreaFilled(false);
+        btnEmpleados.setFocusPainted(false);
         btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEmpleadosActionPerformed(evt);
@@ -74,7 +78,10 @@ public class Administrador extends javax.swing.JFrame {
 
         btnSesion.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/log_logout_door_1563.png"))); // NOI18N
-        btnSesion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSesion.setBorder(null);
+        btnSesion.setBorderPainted(false);
+        btnSesion.setContentAreaFilled(false);
+        btnSesion.setFocusPainted(false);
         btnSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSesionActionPerformed(evt);
@@ -84,7 +91,10 @@ public class Administrador extends javax.swing.JFrame {
 
         btnProveedor.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/capturista.png"))); // NOI18N
-        btnProveedor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnProveedor.setBorder(null);
+        btnProveedor.setBorderPainted(false);
+        btnProveedor.setContentAreaFilled(false);
+        btnProveedor.setFocusPainted(false);
         btnProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProveedorActionPerformed(evt);
@@ -94,7 +104,10 @@ public class Administrador extends javax.swing.JFrame {
 
         btnConfiguracion.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iEngrenages_24182.png"))); // NOI18N
-        btnConfiguracion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnConfiguracion.setBorder(null);
+        btnConfiguracion.setBorderPainted(false);
+        btnConfiguracion.setContentAreaFilled(false);
+        btnConfiguracion.setFocusPainted(false);
         btnConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfiguracionActionPerformed(evt);
@@ -104,7 +117,10 @@ public class Administrador extends javax.swing.JFrame {
 
         btnVentas.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cashier_icon-icons.com_53629.png"))); // NOI18N
-        btnVentas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVentas.setBorder(null);
+        btnVentas.setBorderPainted(false);
+        btnVentas.setContentAreaFilled(false);
+        btnVentas.setFocusPainted(false);
         btnVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentasActionPerformed(evt);
@@ -114,7 +130,10 @@ public class Administrador extends javax.swing.JFrame {
 
         btnProdcutos.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnProdcutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/if-01-halloweensweetscandytricktreat-2660267_86899.png"))); // NOI18N
-        btnProdcutos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnProdcutos.setBorder(null);
+        btnProdcutos.setBorderPainted(false);
+        btnProdcutos.setContentAreaFilled(false);
+        btnProdcutos.setFocusable(false);
         btnProdcutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProdcutosActionPerformed(evt);
@@ -165,8 +184,10 @@ public class Administrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSesionActionPerformed
-                dispose();
-                new Login().setVisible(true);
+        if(JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea cerrar sesion?") == 0){
+            dispose();
+            new Login().setVisible(true);
+        }
     }//GEN-LAST:event_btnSesionActionPerformed
 
     private void btnProdcutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdcutosActionPerformed

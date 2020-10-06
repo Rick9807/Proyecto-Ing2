@@ -96,7 +96,10 @@ int ID;
 
         btnBus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnBus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user_theinformation_788.png"))); // NOI18N
-        btnBus.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBus.setBorder(null);
+        btnBus.setBorderPainted(false);
+        btnBus.setContentAreaFilled(false);
+        btnBus.setFocusPainted(false);
         btnBus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBusActionPerformed(evt);
@@ -105,14 +108,19 @@ int ID;
         getContentPane().add(btnBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, 120, 120));
 
         btnEx.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnEx.setText("Salir");
-        btnEx.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_norm.png"))); // NOI18N
+        btnEx.setBorder(null);
+        btnEx.setBorderPainted(false);
+        btnEx.setContentAreaFilled(false);
+        btnEx.setFocusPainted(false);
+        btnEx.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_press.png"))); // NOI18N
+        btnEx.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_roll.png"))); // NOI18N
         btnEx.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEx, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 100, 30));
+        getContentPane().add(btnEx, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 120, 60));
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));

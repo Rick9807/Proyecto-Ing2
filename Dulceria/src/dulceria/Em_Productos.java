@@ -157,7 +157,10 @@ public class Em_Productos extends javax.swing.JFrame {
         getContentPane().add(txtSto, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 200, 30));
 
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dulceria/add_also_insert_255.png"))); // NOI18N
-        btnAgregar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAgregar.setBorder(null);
+        btnAgregar.setBorderPainted(false);
+        btnAgregar.setContentAreaFilled(false);
+        btnAgregar.setFocusPainted(false);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -166,14 +169,19 @@ public class Em_Productos extends javax.swing.JFrame {
         getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 120, 120));
 
         btnExit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnExit.setText("Salir");
-        btnExit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_norm.png"))); // NOI18N
+        btnExit.setBorder(null);
+        btnExit.setBorderPainted(false);
+        btnExit.setContentAreaFilled(false);
+        btnExit.setFocusPainted(false);
+        btnExit.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_press.png"))); // NOI18N
+        btnExit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_roll.png"))); // NOI18N
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, 100, 30));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, 120, 40));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -189,14 +197,19 @@ public class Em_Productos extends javax.swing.JFrame {
         txtCompania.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtCompania, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 200, 30));
 
-        btnBs.setText("Buscar");
-        btnBs.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_norm.png"))); // NOI18N
+        btnBs.setBorder(null);
+        btnBs.setBorderPainted(false);
+        btnBs.setContentAreaFilled(false);
+        btnBs.setFocusPainted(false);
+        btnBs.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_press.png"))); // NOI18N
+        btnBs.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_roll.png"))); // NOI18N
         btnBs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBsActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBs, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 120, 30));
+        getContentPane().add(btnBs, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 130, 40));
 
         txtBus.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 200, 30));
@@ -207,7 +220,7 @@ public class Em_Productos extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoAdmin.jpeg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 520));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 620, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

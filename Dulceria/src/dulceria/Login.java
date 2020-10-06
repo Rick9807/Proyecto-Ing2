@@ -47,6 +47,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 102, 102));
         setIconImage(getIconImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -59,17 +60,21 @@ public class Login extends javax.swing.JFrame {
         txtpass.setName(""); // NOI18N
         getContentPane().add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 220, 30));
 
-        btnIngresar.setBackground(new java.awt.Color(255, 204, 255));
+        btnIngresar.setBackground(new java.awt.Color(255, 51, 0));
         btnIngresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnIngresar.setForeground(new java.awt.Color(204, 0, 255));
-        btnIngresar.setText("Ingresar");
-        btnIngresar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnIngresar.setForeground(new java.awt.Color(0, 0, 255));
+        btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/acep_norm.png"))); // NOI18N
+        btnIngresar.setBorder(null);
+        btnIngresar.setContentAreaFilled(false);
+        btnIngresar.setFocusPainted(false);
+        btnIngresar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/acep_press.png"))); // NOI18N
+        btnIngresar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/acep_roll.png"))); // NOI18N
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 120, 30));
+        getContentPane().add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 110, 40));
 
         jLabel2.setBackground(new java.awt.Color(255, 204, 255));
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
@@ -83,17 +88,22 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("Usuario");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, -1, -1));
 
-        btnExit.setBackground(new java.awt.Color(255, 204, 255));
+        btnExit.setBackground(new java.awt.Color(0, 0, 204));
         btnExit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnExit.setForeground(new java.awt.Color(255, 0, 255));
-        btnExit.setText("Salir");
-        btnExit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnExit.setForeground(new java.awt.Color(0, 51, 204));
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/salir_norm.png"))); // NOI18N
+        btnExit.setBorder(null);
+        btnExit.setBorderPainted(false);
+        btnExit.setContentAreaFilled(false);
+        btnExit.setFocusPainted(false);
+        btnExit.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/salir_press.png"))); // NOI18N
+        btnExit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_roll.png"))); // NOI18N
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 120, 30));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 130, 40));
 
         txtUser.setBackground(new java.awt.Color(255, 204, 255));
         txtUser.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -102,6 +112,7 @@ public class Login extends javax.swing.JFrame {
         txtUser.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 220, 30));
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dulceria/dulceria.jpg"))); // NOI18N
         jLabel1.setToolTipText("");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 600));
@@ -156,7 +167,9 @@ JOptionPane.showMessageDialog(null,"Debes llenar todos los campos");
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-       System.exit(0);
+       if(JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea salir?") == 0)
+            System.exit(0);
+       
     }//GEN-LAST:event_btnExitActionPerformed
 
   

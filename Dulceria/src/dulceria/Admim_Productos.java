@@ -47,7 +47,10 @@ public class Admim_Productos extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnProduc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/businesspackage_additionalpackage_box_add_insert_negoci_2335.png"))); // NOI18N
-        btnProduc.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnProduc.setBorder(null);
+        btnProduc.setBorderPainted(false);
+        btnProduc.setContentAreaFilled(false);
+        btnProduc.setFocusPainted(false);
         btnProduc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProducActionPerformed(evt);
@@ -56,7 +59,10 @@ public class Admim_Productos extends javax.swing.JFrame {
         getContentPane().add(btnProduc, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 120, 120));
 
         btnMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/note_edit_12872.png"))); // NOI18N
-        btnMod.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnMod.setBorder(null);
+        btnMod.setBorderPainted(false);
+        btnMod.setContentAreaFilled(false);
+        btnMod.setFocusPainted(false);
         btnMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModActionPerformed(evt);
@@ -65,7 +71,10 @@ public class Admim_Productos extends javax.swing.JFrame {
         getContentPane().add(btnMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 120, 120));
 
         btnInv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/checklist_25365.png"))); // NOI18N
-        btnInv.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnInv.setBorder(null);
+        btnInv.setBorderPainted(false);
+        btnInv.setContentAreaFilled(false);
+        btnInv.setFocusPainted(false);
         btnInv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInvActionPerformed(evt);
@@ -74,14 +83,19 @@ public class Admim_Productos extends javax.swing.JFrame {
         getContentPane().add(btnInv, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 120, 120));
 
         btnExit.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnExit.setText("Salir");
-        btnExit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_norm.png"))); // NOI18N
+        btnExit.setBorder(null);
+        btnExit.setBorderPainted(false);
+        btnExit.setContentAreaFilled(false);
+        btnExit.setFocusPainted(false);
+        btnExit.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_press.png"))); // NOI18N
+        btnExit.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_roll.png"))); // NOI18N
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 100, 30));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 120, 40));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
