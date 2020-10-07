@@ -45,6 +45,7 @@ public class Ventas1 extends javax.swing.JFrame {
    
     public Ventas1() {
         initComponents();
+        txtCa.setValue(1);
         user = Login.user;
         sesion_usuario = 1; 
         setResizable(false);
@@ -142,6 +143,7 @@ txt.setText(ss);
         txtTpagar = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
+        ButtonCancel = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaDetalle = new javax.swing.JTable();
 
@@ -365,6 +367,14 @@ txt.setText(ss);
             }
         });
 
+        ButtonCancel.setText("Cancelar");
+        ButtonCancel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -376,7 +386,9 @@ txt.setText(ss);
                 .addComponent(txtTpagar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addComponent(ButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -390,7 +402,8 @@ txt.setText(ss);
                         .addComponent(jLabel4))
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
@@ -469,6 +482,26 @@ txt.setText(ss);
         AgregarPro();
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void ButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelActionPerformed
+        Cancelar();
+    }//GEN-LAST:event_ButtonCancelActionPerformed
+
+    void Cancelar(){
+        txtCl1.setText(null);
+        txtCl1.setEditable(true);
+        jButton4.setEnabled(true);
+        txtCl2.setText(null);
+        txtPro1.setText(null);
+        txtPro2.setText(null);
+        txtP.setText(null);
+        txtS.setText(null);
+        txtCa.setValue(1);
+        DefaultTableModel model = (DefaultTableModel) TablaDetalle.getModel(); 
+        model.setRowCount(0); 
+        txtTpagar.setText(null);
+        tpagar=0;
+    }
+    
     void guardarVenta() {
         String dates = "";
         dates=txtDate.getText();
@@ -711,8 +744,6 @@ txt.setText(ss);
         for(int i=0; i<fila; i++){
             int codProd = (int) TablaDetalle.getValueAt(i,1); //Obtener valores de la fila i y columna 1 (en esto caso, el codigo del producto).
             int cantidad = (int) TablaDetalle.getValueAt(i,3); //Obtener valores de la fila i y columna 3 (en esto caso, la cantidad).
-            System.out.println("Resultado codigo: "+codProd);
-            System.out.println("Resultado cantidad: "+cantidad);
             
             try{
                 Connection cn = Conexion.conectar(); //Conexión a BD
@@ -721,51 +752,17 @@ txt.setText(ss);
                 ResultSet rs = pat.executeQuery();
                 if(rs.next()){
                     int newStock = rs.getInt("stock");
-                    System.out.println(newStock);
                     newStock = newStock - cantidad;
-                    System.out.println(newStock);
                     PreparedStatement pat2 = cn.prepareStatement( //Prepaparar query.
-                        "update productos set stock = "+newStock+" where codigo_producto = "+codProd+"");
-                    pat2.executeQuery();
-                    System.out.println("Si pasa");
-                    JOptionPane.showMessageDialog(this, "Stock de "+rs.getString("nombre")+" actualizado!");
+                        "UPDATE productos SET stock = "+newStock+" WHERE codigo_producto = "+codProd);
+                    pat2.execute();
+                    JOptionPane.showMessageDialog(this, "Stock  actualizado!");
                 }
                 cn.close();
             }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"No se ha podido actualizar el Stock");
-
+                JOptionPane.showMessageDialog(null,"No se ha podido actualizar el Stock");
             }
         }
-                
-                
-        /*for (int i = 0; i < fila; i++) {
-            
-            int enn = 0;
-            int resultado =0;
-            String dos;
-        //   dos =String.valueOf(enn).toString();
-            dos = txtS.getText();
-            System.out.println(dos);// total
-            cantidad = Integer.parseInt(txtCa.getValue().toString());
-            enn = Integer.parseInt(dos);
-            resultado= enn - cantidad ;
-            System.out.println("Resultado"+resultado);
-            System.out.println("Resultado"+encontrados);
-
-            try{
-                Connection cn = Conexion.conectar();
-                PreparedStatement pat = cn.prepareStatement(
-                "update productos set stock=? where codigo_producto= '" +encontrados+ "'");
-
-                pat.setInt(1,resultado);
-
-                pat.executeUpdate();
-                cn.close();
-            }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"No se ha podido actualizar el Stock");
-
-            }
-        }*/
     }
     
        void nuevo(){
@@ -844,6 +841,7 @@ System.out.println(V);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonCancel;
     private javax.swing.JTable TablaDetalle;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
