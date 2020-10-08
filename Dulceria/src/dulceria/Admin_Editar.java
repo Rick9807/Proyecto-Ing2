@@ -64,12 +64,15 @@ int ID;
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtNom.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtNom.setEnabled(false);
         getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 230, 30));
 
         txtApe.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtApe.setEnabled(false);
         getContentPane().add(txtApe, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 230, 30));
 
         txtEdad.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtEdad.setEnabled(false);
         txtEdad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEdadActionPerformed(evt);
@@ -83,6 +86,7 @@ int ID;
         getContentPane().add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 230, 30));
 
         txtTel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtTel.setEnabled(false);
         txtTel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelActionPerformed(evt);
@@ -96,6 +100,7 @@ int ID;
         getContentPane().add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 230, 30));
 
         txtCorreo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtCorreo.setEnabled(false);
         getContentPane().add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 230, 30));
 
         txtPass.setEditable(false);
@@ -229,293 +234,144 @@ int ID;
 
     private void btnExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExActionPerformed
        dispose();
-        new Admin_Empleados().setVisible(true);
+        new Admin_Empleados().setVisible(true);  
     }//GEN-LAST:event_btnExActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-       int puesto_cmb, sexo , validacion =0;
+       int puesto_cmb, sexo;
        String edad ,nombre, apellidos, telefono,correo , contrasena, permisos_string ="", permisos="";
        
-       correo = txtCorreo.getText().trim();
+        correo = txtCorreo.getText().trim();
         contrasena = txtPass.getText().trim();
         nombre = txtNom.getText().trim();
         apellidos = txtApe.getText().trim();
         telefono = txtTel.getText().trim();
         puesto_cmb = jcbP.getSelectedIndex()+1;
         sexo = jcbSex.getSelectedIndex()+1;
-        edad = txtEdad.getText();
- 
+        edad = txtEdad.getText();      
         
-        
-        if(correo.equals("")){
-        
-            txtCorreo.setBackground(Color.WHITE);
-            validacion++;
-            JOptionPane.showMessageDialog(null, "El campo Usuario esta vacio");
-        }if(contrasena.equals("")){
-        
-            txtPass.setBackground(Color.WHITE);
-            validacion++;
-        }
-        if(nombre.equals("")){
-        
-            txtNom.setBackground(Color.WHITE);
-            validacion++;
-        }
-        if(apellidos.equals("")){
-        
-            txtApe.setBackground(Color.WHITE);
-            validacion++;
-        }if(telefono.equals("")){
-        
-            txtTel.setBackground(Color.WHITE);
-            validacion++;
-        }if(edad.equals("")){
-        
-            txtEdad.setBackground(Color.WHITE);
-            validacion++;
-        }
-        if(validacion==0){
-        
-      if(puesto_cmb == 1){
-        permisos_string ="Empleado";
-        
-        
-        }else if(puesto_cmb == 2){
-        permisos_string ="Jefe";
-        
-        }
-        if(sexo == 1){
-        permisos ="F";
-        
-        }else if(sexo == 2){
-        permisos ="M";
-        
-        }
-        
-        try{
-        Connection cn = Conexion.conectar();
-        
-        PreparedStatement pat = cn.prepareStatement(
-            "select usuario from usuarios where usuario = '" + correo + "' and not id_usuario = '"+ ID
-             + "'");
-             ResultSet rs = pat.executeQuery();
-            
-             if(rs.next()){
-             JOptionPane.showMessageDialog(null,"El nombre de usuario no esta disponible");
-             cn.close();
-                
-             }else{
-             
-           Connection cn2 = Conexion.conectar();
-           PreparedStatement pat2 = cn2.prepareStatement(
-           "update usuarios set nombre=?, apellidos=?, edad=?, sexo=?, telefono=?, puesto=?, usuario=?, password=?"
-                   + " where id_usuario = '"+ ID +"'");
-          
-            pat2.setString(1,nombre);
-            pat2.setString(2,apellidos );
-            pat2.setString(3,edad );
-            pat2.setString(4,permisos);
-            pat2.setString(5,telefono );
-            pat2.setString(6,permisos_string);
-            pat2.setString(7,correo );
-            pat2.setString(8,contrasena );
-           
-            pat2.executeUpdate();
-            cn2.close();
-            
-            JOptionPane.showMessageDialog(null," Se ha modificado exitosamente ");
-            Limpiar();
-            btnBus.setEnabled(true);
-            txtNom1.setEditable(true);
-             }
-            
-            }catch(SQLException e){
-        
-        System.err.println("Error al actualizar Empleado" + e);
-        }
-        
+        if(correo.equals("") || contrasena.equals("") || nombre.equals("") || apellidos.equals("") || telefono.equals("") || edad.equals("")){
+            //txtCorreo.setBackground(Color.WHITE);
+            //validacion++;
+            JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos");
         }else{
-        
-        JOptionPane.showMessageDialog(null," Debes de llenar todos los campos ");
-        }
+            if(puesto_cmb == 1){
+            permisos_string ="Empleado";
+            }else if(puesto_cmb == 2){
+            permisos_string ="Jefe";
+            }
+            if(sexo == 1){
+            permisos ="F";
+            }else if(sexo == 2){
+            permisos ="M";
+            }
+
+            try{
+            Connection cn = Conexion.conectar();
+
+            PreparedStatement pat = cn.prepareStatement(
+                "select usuario from usuarios where usuario = '" + correo + "' and not id_usuario = '"+ ID
+                 + "'");
+                 ResultSet rs = pat.executeQuery();
+
+                 if(rs.next()){
+                 JOptionPane.showMessageDialog(null,"El nombre de usuario no esta disponible");
+                 cn.close();
+
+                 }else{
+                    Connection cn2 = Conexion.conectar();
+                    PreparedStatement pat2 = cn2.prepareStatement(
+                    "update usuarios set nombre=?, apellidos=?, edad=?, sexo=?, telefono=?, puesto=?, usuario=?, password=?"
+                            + " where id_usuario = '"+ ID +"'");
+
+                     pat2.setString(1,nombre);
+                     pat2.setString(2,apellidos );
+                     pat2.setString(3,edad );
+                     pat2.setString(4,permisos);
+                     pat2.setString(5,telefono );
+                     pat2.setString(6,permisos_string);
+                     pat2.setString(7,correo );
+                     pat2.setString(8,contrasena );
+
+                     pat2.executeUpdate();
+                     cn2.close();
+
+                     JOptionPane.showMessageDialog(null," Se ha modificado exitosamente ");
+                     Limpiar();
+                 }
+                }catch(SQLException e){
+                  System.err.println("Error al actualizar Empleado" + e);
+                }
+            }
         
         
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnDelateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelateActionPerformed
-        
-       int puesto_cmb, sexo , validacion =0;
-        
-        String usuario = "", edad ,nombre1, apellidos, telefono,correo , contrasena, permisos_string ="", permisos="";
+        String usuario = "";
         usuario = txtNom1.getText();
-        
-        correo = txtCorreo.getText().trim();
-        contrasena = txtPass.getText().trim();
-        nombre1 = txtNom.getText().trim();
-        apellidos = txtApe.getText().trim();
-        telefono = txtTel.getText().trim();
-        puesto_cmb = jcbP.getSelectedIndex()+1;
-        sexo = jcbSex.getSelectedIndex()+1;
-        edad = txtEdad.getText();
-
-
-       if(correo.equals("")){
-        
-            txtCorreo.setBackground(Color.WHITE);
-            validacion++;
-          
-        }if(contrasena.equals("")){
-        
-            txtPass.setBackground(Color.WHITE);
-            validacion++;
-        }
-        if(nombre1.equals("")){
-        
-            txtNom.setBackground(Color.WHITE);
-            validacion++;
-        }
-        if(apellidos.equals("")){
-        
-            txtApe.setBackground(Color.WHITE);
-            validacion++;
-        }if(telefono.equals("")){
-        
-            txtTel.setBackground(Color.WHITE);
-            validacion++;
-        }if(edad.equals("")){
-        
-            txtEdad.setBackground(Color.WHITE);
-            validacion++; }
-//        }if(puesto_cmb == 1){
-//        permisos_string ="Empleado";
-//        
-//        
-//        }else if(puesto_cmb == 2){
-//        permisos_string ="Jefe";
-//        
-//        }
-//        if(sexo == 1){
-//        permisos ="F";
-//        
-//        }else if(sexo == 2){
-//        permisos ="M";
-//        
-//        }
-        //ResultSet rs = pat.executeQuery();
-        if(validacion== 0){
-            txtCorreo.setEditable(false);
-            //txtPass.setEditable(false);
-            txtEdad.setEditable(false);
-            txtNom.setEditable(false);
-            txtApe.setEditable(false);
-            txtTel.setEditable(false);
-            jcbP.setEditable(false);
-            jcbSex.setEditable(false);
-            btnEdit.setEnabled(false);
-            btnBus.setEnabled(false);
-            txtNom1.setEditable(false);
-    try{
-        Connection cn = Conexion.conectar();
-        
-        PreparedStatement pat = cn.prepareStatement(
-            "delete from usuarios where nombre = '" + usuario+ "'");  
-         
-  
-        pat.executeUpdate();
-          cn.close();
-          
-            
-            JOptionPane.showMessageDialog(null," Se ha eliminado exitosamente ");
+        try{
+            Connection cn = Conexion.conectar();
+            PreparedStatement pat = cn.prepareStatement(
+                "delete from usuarios where nombre = '" + usuario+ "'");  
+            if(JOptionPane.showConfirmDialog(this, "¿Esta seguro de borrar a este empleado?") == 0) {
+                pat.executeUpdate();
+                JOptionPane.showMessageDialog(null," Se ha eliminado exitosamente ");
+                Limpiar();
+            }
+            cn.close();      
+        }catch(SQLException e){
+            System.err.println("Error al eliminar Empleado " + e);
+            JOptionPane.showMessageDialog(null," Error al eliminar el Empleado debido a la restrición de la BD ");
             Limpiar();
-             txtCorreo.setEditable(true);
-            //txtPass.setEditable(true);
-            txtEdad.setEditable(true);
-            txtNom.setEditable(true);
-            txtApe.setEditable(true);
-            txtTel.setEditable(true);
-            jcbP.setEditable(true);
-            jcbSex.setEditable(true);
-            btnEdit.setEnabled(true);
-            btnBus.setEnabled(true);
-            txtNom1.setEditable(true);
-        
-    }catch(SQLException e){
-         
-        System.err.println("Error al eliminar Empleado " + e);
-           JOptionPane.showMessageDialog(null," Error al eliminar el Empleado debido a la restrición de la BD ");
-     Limpiar();
-             txtCorreo.setEditable(true);
-            //txtPass.setEditable(true);
-            txtEdad.setEditable(true);
-            txtNom.setEditable(true);
-            txtApe.setEditable(true);
-            txtTel.setEditable(true);
-            jcbP.setEditable(true);
-            jcbSex.setEditable(true);
-            btnEdit.setEnabled(true);
-            btnBus.setEnabled(true);
-            txtNom1.setEditable(true);
-    
-    }
-        } else{
-        
-        
-        JOptionPane.showMessageDialog(null," Deben estar llenos todos los campos ");
-        
-        }
+        } 
         
     }//GEN-LAST:event_btnDelateActionPerformed
 
     private void btnBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusActionPerformed
-        
-        int validacion=0;
         String nombre="";
-        
         nombre = txtNom1.getText();
         
         if(nombre.equals("")){
-        validacion++;
-        //JOptionPane.showMessageDialog(null, "El campo esta vacio");
-        }
-        
-        if(validacion==0){
-             btnBus.setEnabled(false);
-            txtNom1.setEditable(false);
+            JOptionPane.showMessageDialog(null, "Debe llenar el campo requerido");
+            txtNom1.setBackground(Color.yellow);
+        }else{
+            txtNom1.setBackground(Color.white);
            try{
-        Connection cn = Conexion.conectar();
-        PreparedStatement pat = cn.prepareStatement(
-            "select * from usuarios where nombre = '" + nombre + "'");
-             ResultSet rs = pat.executeQuery();
-            
-             if(rs.next()){
-             ID = rs.getInt("id_usuario");
-             txtNom.setText(rs.getString("nombre"));
-             txtApe.setText(rs.getString("apellidos"));
-             txtEdad.setText(rs.getString("edad"));
-             txtTel.setText(rs.getString("telefono"));
-             txtCorreo.setText(rs.getString("usuario"));
-             txtPass.setText(rs.getString("password"));
-             jcbP.setSelectedItem(rs.getString("puesto"));
-             jcbSex.setSelectedItem(rs.getString("sexo"));
-             cn.close();
-             }
-             //cn.close();
-            
-             else{
-             JOptionPane.showMessageDialog(null,"No existe el empleado "+ nombre +" en la Base de datos" );
-             Limpiar();
-             }
+                Connection cn = Conexion.conectar();
+                PreparedStatement pat = cn.prepareStatement(
+                "select * from usuarios where nombre = '" + nombre + "'");
+                 ResultSet rs = pat.executeQuery();
+
+                 if(rs.next()){
+                 ID = rs.getInt("id_usuario");
+                 txtNom.setText(rs.getString("nombre"));
+                 txtApe.setText(rs.getString("apellidos"));
+                 txtEdad.setText(rs.getString("edad"));
+                 txtTel.setText(rs.getString("telefono"));
+                 txtCorreo.setText(rs.getString("usuario"));
+                 txtPass.setText(rs.getString("password"));
+                 jcbP.setSelectedItem(rs.getString("puesto"));
+                 jcbSex.setSelectedItem(rs.getString("sexo"));
+                 //cn.close();
+                 btnEdit.setEnabled(true);
+                 btnDelate.setEnabled(true);
+                 txtNom.setEnabled(true);
+                 txtApe.setEnabled(true);
+                 txtEdad.setEnabled(true);
+                 txtTel.setEnabled(true);
+                 txtCorreo.setEnabled(true);
+                 }
+                 else{
+                    JOptionPane.showMessageDialog(null,"No existe el empleado "+ nombre +" en la Base de datos" );
+                    Limpiar();
+                 }
+                 cn.close();
             }catch(SQLException e){
                 System.err.println("Error al cargar la información del empleado" + e);
-          JOptionPane.showMessageDialog(null," ERROR al cargar información del empleado, contacte al administrador ");
+                JOptionPane.showMessageDialog(null,"ERROR al cargar información del empleado, contacte al administrador ");
+            }
         }
-        }else{
-        
-         JOptionPane.showMessageDialog(null,"Debes de llenar el campo ");
-        
-        }
-        
     }//GEN-LAST:event_btnBusActionPerformed
 
     private void txtEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadActionPerformed
@@ -603,18 +459,22 @@ int ID;
     private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
  public void Limpiar(){
+    txtNom1.setText("");
+    txtNom.setText("");
+    txtApe.setText("");
+    txtEdad.setText("");
+    txtTel.setText("");
+    txtCorreo.setText("");
+    txtPass.setText("");
+    jcbP.setSelectedIndex(0);
+    jcbSex.setSelectedIndex(0);
     
-                    txtNom.setText("");
-                    txtApe.setText("");
-                    txtEdad.setText("");
-                    txtTel.setText("");
-                    txtCorreo.setText("");
-                    txtPass.setText("");
-                    jcbP.setSelectedIndex(0);
-                    jcbSex.setSelectedIndex(0);
-                   
-    
-        }
-
-
+    btnEdit.setEnabled(false);
+    btnDelate.setEnabled(false);
+    txtNom.setEnabled(false);
+    txtApe.setEnabled(false);
+    txtEdad.setEnabled(false);
+    txtTel.setEnabled(false);
+    txtCorreo.setEnabled(false);
+    }
 }

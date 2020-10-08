@@ -56,21 +56,26 @@ public static int Sesion_usuario, Id;
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtNom.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtNom.setEnabled(false);
         getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 210, 30));
 
         txtTel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtTel.setEnabled(false);
         getContentPane().add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 210, 30));
 
         txtCorreo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtCorreo.setEnabled(false);
         getContentPane().add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 210, 30));
 
         txtComp.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtComp.setEnabled(false);
         getContentPane().add(txtComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 210, 30));
 
         btnMod.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/writer_person_people_man_you_1633.png"))); // NOI18N
         btnMod.setBorder(null);
         btnMod.setBorderPainted(false);
         btnMod.setContentAreaFilled(false);
+        btnMod.setEnabled(false);
         btnMod.setFocusPainted(false);
         btnMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +88,7 @@ public static int Sesion_usuario, Id;
         btnMod1.setBorder(null);
         btnMod1.setBorderPainted(false);
         btnMod1.setContentAreaFilled(false);
+        btnMod1.setEnabled(false);
         btnMod1.setFocusPainted(false);
         btnMod1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -412,15 +418,13 @@ int validacion=0;
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
- public void Limpiar(){
+ public void Limpiar(){   
+        txtNom.setText("");
+        txtCorreo.setText("");
+        txtTel.setText("");
+        txtComp.setText("");
     
-                    
-                    txtNom.setText("");
-                    txtCorreo.setText("");
-                    txtTel.setText("");
-                    txtComp.setText("");
-    
-        }
+    }
 
 
 
