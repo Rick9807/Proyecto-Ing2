@@ -125,7 +125,7 @@ int ID;
 
     private void btnPasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasActionPerformed
       dispose();
-        new EmConfi_Admin().setVisible(true);
+        new Confi_Admin().setVisible(true);
     }//GEN-LAST:event_btnPasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

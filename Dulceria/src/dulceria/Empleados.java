@@ -194,7 +194,7 @@ public class Empleados extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         dispose();
-        new Em_Pro_Mostrar().setVisible(true);
+        new Ad_Pro_Mostrar().setVisible(true);
     }                                        
 
     

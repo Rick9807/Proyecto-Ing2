@@ -146,17 +146,17 @@ public class Empleado_Ad_Ventas extends javax.swing.JFrame {
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
        dispose();
-       new Em_Clientes1().setVisible(true);
+       new Ad_Clientes().setVisible(true);
     }//GEN-LAST:event_btnClientesActionPerformed
 
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
         dispose();
-        new EmpleadosVentas().setVisible(true);
+        new Ventas1().setVisible(true);
     }//GEN-LAST:event_btnVentasActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         dispose();
-        new Em_Registro_Ventas().setVisible(true);
+        new Registro_Ventas().setVisible(true);
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed

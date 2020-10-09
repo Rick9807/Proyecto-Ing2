@@ -125,8 +125,7 @@ public class Empleados_Productos extends javax.swing.JFrame {
 
     private void btnProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProducActionPerformed
        dispose();
-       new Em1Productos().setVisible(true);
-        
+       new Productos().setVisible(true);
     }//GEN-LAST:event_btnProducActionPerformed
 
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
@@ -138,8 +137,7 @@ public class Empleados_Productos extends javax.swing.JFrame {
 
     private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvActionPerformed
       dispose();
-      new Em_Productos_Mostrar().setVisible(true);
-        
+      new Ad_Productos_Mostrar().setVisible(true);
     }//GEN-LAST:event_btnInvActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
