@@ -251,8 +251,6 @@ int ID;
         edad = txtEdad.getText();      
         
         if(correo.equals("") || contrasena.equals("") || nombre.equals("") || apellidos.equals("") || telefono.equals("") || edad.equals("")){
-            //txtCorreo.setBackground(Color.WHITE);
-            //validacion++;
             JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos");
         }else{
             if(puesto_cmb == 1){
@@ -276,8 +274,6 @@ int ID;
 
                  if(rs.next()){
                  JOptionPane.showMessageDialog(null,"El nombre de usuario no esta disponible");
-                 cn.close();
-
                  }else{
                     Connection cn2 = Conexion.conectar();
                     PreparedStatement pat2 = cn2.prepareStatement(
@@ -299,8 +295,10 @@ int ID;
                      JOptionPane.showMessageDialog(null," Se ha modificado exitosamente ");
                      Limpiar();
                  }
+                 cn.close();                
                 }catch(SQLException e){
                   System.err.println("Error al actualizar Empleado" + e);
+                  JOptionPane.showMessageDialog(null," Error al modificar el Empleado, consulte al administrador");
                 }
             }
         

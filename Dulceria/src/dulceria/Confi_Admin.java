@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 public class Confi_Admin extends javax.swing.JFrame {
-String user, usuario, nombre;
+String user, usuario, nombre, pass;
 int ID;
    
     public Confi_Admin() {
@@ -24,12 +24,10 @@ int ID;
         
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
-       // txtUs.setText(user);
+       txtUs.setText(user);
+       txtP.setEditable(true);
        txt1.setEditable(false);
-        txt2.setEditable(false);
-        btnEdit.setEnabled(false);
-     
-
+       txt2.setEditable(false);
     }
 
     /**
@@ -62,6 +60,7 @@ int ID;
 
         txtUs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUs.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtUs.setEnabled(false);
         getContentPane().add(txtUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 230, 30));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -161,58 +160,41 @@ int ID;
     }//GEN-LAST:event_btnExActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-       int  validacion =0;
-       String Usu ,Pass="", New="", New1="";
+       String New="", New1="";
        
-       
-     
         New = txt1.getText().trim();
         New1 = txt2.getText().trim();
-        
- 
-        
-        
-
-            
-       if(!New.equals("")&& !New1.equals("")){
-           
+      
+       if(!New.equals("") && !New1.equals("")){
            if(New.equals(New1)){
-          
-        try{
-        Connection cn = Conexion.conectar();
-        
-        PreparedStatement pat = cn.prepareStatement(
-            "update usuarios set password=? where usuario = '"+nombre +"'");
-             pat.setString(1,New);
-           
-           
-            pat.executeUpdate();
-            cn.close();
-            
-            JOptionPane.showMessageDialog(null," Se ha actualizado el password exitosamente ");
-            Limpiar();
-        txt1.setEditable(false);
-        txt2.setEditable(false);
-        btnEdit.setEnabled(false);
-        txtUs.setEditable(true);
-        btnBus.setEnabled(true);
-        //txtP.setText("");
-        
-            }catch(SQLException e){
-        
-        System.err.println("Error al actualizar Empleado" + e);
-        }
+                try{
+                Connection cn = Conexion.conectar();
+
+                PreparedStatement pat = cn.prepareStatement(
+                    "update usuarios set password=? where usuario = '"+ user +"'");
+                     pat.setString(1,New);
+
+                    pat.executeUpdate();
+                    cn.close();
+
+                    JOptionPane.showMessageDialog(null," Se ha actualizado el password exitosamente ");
+                    Limpiar();
+                    
+                    txt1.setEditable(false);
+                    txt2.setEditable(false);
+                    btnEdit.setEnabled(false);
+                    txtP.setEditable(true);
+                    btnBus.setEnabled(true);
+                    txtP.setText("");
+                    }catch(SQLException e){
+                System.err.println("Error al actualizar Empleado" + e);
+                }
            }else{
-           
-               JOptionPane.showMessageDialog(null," Los password deben coincidir");
-           
+                JOptionPane.showMessageDialog(null," Los password deben coincidir");
            }
-            
-       
        }else{
-            JOptionPane.showMessageDialog(null," No se admiten passwords vacios ");
-            
-            }
+            JOptionPane.showMessageDialog(null,"No se admiten passwords vacios"); 
+        }
         
         
         
@@ -220,53 +202,39 @@ int ID;
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusActionPerformed
-
-        int validacion=0;
-        String nomb="";
-
-        nombre = txtUs.getText();
+        pass = txtP.getText();
         
-        if(nombre.equals("")){
-            validacion++;
-            
-        }
-
-        if(validacion==0){
+        if(pass.equals("")){
+            JOptionPane.showMessageDialog(null, "Debe llenar el campo requerido");
+            txtP.setBackground(Color.yellow);
+        }else{
+            txtP.setBackground(Color.white);
             try{
                 Connection cn = Conexion.conectar();
                 PreparedStatement pat = cn.prepareStatement(
-                    "select usuario, password from usuarios where usuario = '" + nombre + "'");
+                "select usuario, password from usuarios where usuario = '" + user + "' and password = '"+ pass + "'");
                 ResultSet rs = pat.executeQuery();
 
              if(rs.next()){
-             nomb = rs.getString("password");
-            txtP.setText(nomb);
-             JOptionPane.showMessageDialog(null,"Datos correctos "); 
-                    
-                    cn.close();
-                   
-        txt1.setEditable(true);
-        txt2.setEditable(true);
-        btnEdit.setEnabled(true);
-        txtUs.setEditable(false);
-        txtP.setEditable(false);
-        btnBus.setEnabled(false);
+                JOptionPane.showMessageDialog(null,"Datos correctos ");  
+                
+                txt1.setEditable(true);
+                txt2.setEditable(true);
+                btnEdit.setEnabled(true);
+                txtUs.setEditable(false);
+                txtP.setEditable(false);
+                btnBus.setEnabled(false);
                 }
-
                 else{
-                    JOptionPane.showMessageDialog(null,"No se ha encontrado al empleado en la BD");
+                    JOptionPane.showMessageDialog(null,"Datos incorrectos");
                     Limpiar();
                 }
+             cn.close();
             }catch(SQLException e){
                 System.err.println("Error " + e);
                 JOptionPane.showMessageDialog(null," ERROR, contacte al administrador ");
             }
-        }else{
-
-            JOptionPane.showMessageDialog(null,"Debes de llenar el campo ");
-
         }
-
     }//GEN-LAST:event_btnBusActionPerformed
 
     
@@ -329,11 +297,11 @@ int ID;
     private javax.swing.JTextField txtUs;
     // End of variables declaration//GEN-END:variables
  public void Limpiar(){
-    
-                    txtP.setText("");
-                    txt2.setText("");
-                    
-                    txt1.setText("");
+
+     txtP.setEditable(true);
+     txtP.setText("");
+     txt2.setText("");
+     txt1.setText("");
                  
                    
     

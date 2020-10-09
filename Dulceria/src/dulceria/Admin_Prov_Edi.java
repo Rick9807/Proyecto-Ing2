@@ -2,6 +2,7 @@
 package dulceria;
 import java.sql.*;
 import Clases.Conexion;
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
@@ -177,131 +178,67 @@ public static int Sesion_usuario, Id;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
-int validacion=0;
         String Nombre, Correo, Compania, Telefono;
 
-        Nombre= txtNom.getText().trim();
+        Nombre = txtNom.getText().trim();
         Correo = txtCorreo.getText().trim();
         Telefono = txtTel.getText().trim();
         Compania = txtComp.getText().trim();
 
+        if(Nombre.equals("") || Correo.equals("") || Telefono.equals("") || Compania.equals("")){
+            JOptionPane.showMessageDialog(null, "Todos los campos deben esta llenos");
+        }else{
+            try{
+                Connection cn = Conexion.conectar();
 
-        if(Nombre.equals("")){
-            validacion++;
-        JOptionPane.showMessageDialog(null, "El campo Nombre esta vacio");
+                PreparedStatement pat = cn.prepareStatement(
+                    "select compania from proovedores where compania = '" + Compania + "' and not id_proveedor = '"+ ID
+                     + "'");
+                     ResultSet rs = pat.executeQuery();
+
+                     if(rs.next()){
+                        JOptionPane.showMessageDialog(null,"La compañia ya existe en la Base de datos");
+                     }else{
+                        Connection cn2 = Conexion.conectar();
+                        PreparedStatement pat2 = cn2.prepareStatement("update proovedores set nombre=?,"
+                                   + "telefono=?, correo=?, compania=? where id_proveedor = '"+ ID + "'");
+
+                               pat2.setString(1,Nombre);
+                               pat2.setString(2,Telefono);
+                               pat2.setString(3,Correo);
+                               pat2.setString(4,Compania);
+
+                                pat2.executeUpdate();
+                         cn2.close();
+
+                         JOptionPane.showMessageDialog(null," Se ha modificado exitosamente ");
+                         Limpiar();
+                    }
+                    cn.close();
+            }catch(SQLException e){
+               System.err.println("Error al actualizar Proveedor" + e);
+               JOptionPane.showMessageDialog(null,"ERROR al modificar al proveedor, consulte al administrador"); 
             }
-        if(Correo.equals("")){
-          validacion++;
-            JOptionPane.showMessageDialog(null, "El campo Correo esta vacio");
-            }
-        if(Telefono.equals("")){
-          validacion++;
-        JOptionPane.showMessageDialog(null, "El campo Télefono esta vacio");
-            }
-        if(Compania.equals("")){
-          validacion++;
-        JOptionPane.showMessageDialog(null, "El campo Compañia esta vacio");
-            }
-        
-        if(validacion== 0){
-    try{
-        Connection cn = Conexion.conectar();
-        
-        PreparedStatement pat = cn.prepareStatement(
-            "select compania from proovedores where compania = '" + Compania + "' and not id_proveedor = '"+ ID
-             + "'");
-             ResultSet rs = pat.executeQuery();
-            
-             if(rs.next()){
-             
-                 JOptionPane.showMessageDialog(null,"La compañia ya existe en la Base de datos");
-                 cn.close();
-             }
-              else{
-             
-           Connection cn2 = Conexion.conectar();
-           PreparedStatement pat2 = cn2.prepareStatement("update proovedores set nombre=?,"
-                      + "telefono=?, correo=?, compania=? where id_proveedor = '"+ ID + "'");
-                      
-                      
-                  pat2.setString(1,Nombre);
-                  pat2.setString(2,Telefono);
-                  pat2.setString(3,Correo);
-                  pat2.setString(4,Compania);
-                  
-                   pat2.executeUpdate();
-            cn2.close();
-            
-            JOptionPane.showMessageDialog(null," Se ha modificado exitosamente ");
-            Limpiar();
-            btnBs.setEnabled(true);
-             txtCop.setEditable(true);
-                  
-                      }
-    } catch(SQLException e){
-  System.err.println("Error al actualizar Proveedor" + e);
-    }
-    
-    }else{
-        
-        JOptionPane.showMessageDialog(null," Debes de llenar todos los campos ");
         }
     }//GEN-LAST:event_btnModActionPerformed
 
     private void btnMod1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMod1ActionPerformed
-int validacion=0;
-        String Nombre, Correo, Compania, Telefono;
+        String Compania;
+        Compania = txtCop.getText().trim();
+        try{
+            Connection cn = Conexion.conectar();
 
-        Nombre= txtNom.getText().trim();
-        Correo = txtCorreo.getText().trim();
-        Telefono = txtTel.getText().trim();
-        Compania = txtComp.getText().trim();
-
-
-        if(Nombre.equals("")){
-            validacion++;
-        JOptionPane.showMessageDialog(null, "El campo Nombre esta vacio");
+            PreparedStatement pat = cn.prepareStatement(
+                "delete from proovedores where compania = '" + Compania+ "'");  
+            if(JOptionPane.showConfirmDialog(this, "¿Esta seguro de borrar a este empleado?") == 0) {
+                pat.executeUpdate();
+                JOptionPane.showMessageDialog(null," Se ha eliminado exitosamente ");
+                Limpiar();
             }
-        if(Correo.equals("")){
-          validacion++;
-            JOptionPane.showMessageDialog(null, "El campo Correo esta vacio");
-            }
-        if(Telefono.equals("")){
-          validacion++;
-        JOptionPane.showMessageDialog(null, "El campo Télefono esta vacio");
-            }
-        if(Compania.equals("")){
-          validacion++;
-        JOptionPane.showMessageDialog(null, "El campo Compañia esta vacio");
-            }
-        
-        if(validacion== 0){
-    try{
-        Connection cn = Conexion.conectar();
-        
-        PreparedStatement pat = cn.prepareStatement(
-            "delete from proovedores where compania = '" + Compania+ "'");  
-        //ResultSet rs = pat.executeQuery();
-         
-         
-        pat.executeUpdate();
-          cn.close();
-            
-            JOptionPane.showMessageDialog(null," Se ha eliminado exitosamente ");
-            Limpiar();
-             btnBs.setEnabled(true);
-             txtCop.setEditable(true);
-        
-    }catch(SQLException e){
-         
-        System.err.println("Error al eliminar Empleado " + e);
-         JOptionPane.showMessageDialog(null," No se permite la eliminación del proveedor por restriccion de la BD "); 
-    }
-        } else{
-        
-        
-        JOptionPane.showMessageDialog(null," Debes de llenar todos los campos ");
-        
+            cn.close();  
+        }catch(SQLException e){
+            System.err.println("Error al eliminar Empleado " + e);
+            JOptionPane.showMessageDialog(null," No se permite la eliminación del proveedor por restriccion de la BD "); 
         }
     }//GEN-LAST:event_btnMod1ActionPerformed
 
@@ -313,54 +250,46 @@ int validacion=0;
 
     private void btnBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBsActionPerformed
        String compania="",nombre="";
-        int validacion=0;
-        
         
         compania = txtCop.getText();
         
         if(compania.equals("")){
-        validacion ++;
-        
-        }
-        
-        if(validacion == 0){
+            JOptionPane.showMessageDialog(null, "Debe llenar el campo requerido");
+            txtCop.setBackground(Color.yellow);
+        }else{
+            txtCop.setBackground(Color.white);
            try{
-        Connection cn = Conexion.conectar();
-        
-        
-        PreparedStatement pat = cn.prepareStatement(
-            "select * from proovedores where compania = '" + compania + "'");
-             ResultSet rs = pat.executeQuery();
-            
-             if(rs.next()){
-             ID = rs.getInt("id_proveedor");
-             txtNom.setText(rs.getString("nombre"));
-             txtTel.setText(rs.getString("telefono"));
-             txtCorreo.setText(rs.getString("correo"));
-             txtComp.setText(rs.getString("compania"));
-             Id = rs.getInt("id_usuario");
-            cn.close();
-             btnBs.setEnabled(false);
-             txtCop.setEditable(false);
-             }
-            // cn.close();
-             else{
-             
-              JOptionPane.showMessageDialog(null,"No existe la compañia "+ compania +" en la Base de datos" );
-             Limpiar();
-             
-             }
-             
-                }catch(SQLException e){
+            Connection cn = Conexion.conectar();
+
+            PreparedStatement pat = cn.prepareStatement(
+                "select * from proovedores where compania = '" + compania + "'");
+                 ResultSet rs = pat.executeQuery();
+
+                 if(rs.next()){
+                    ID = rs.getInt("id_proveedor");
+                    txtNom.setText(rs.getString("nombre"));
+                    txtTel.setText(rs.getString("telefono"));
+                    txtCorreo.setText(rs.getString("correo"));
+                    txtComp.setText(rs.getString("compania"));
+                    Id = rs.getInt("id_usuario");
+                   
+                    btnMod.setEnabled(true);
+                    btnMod1.setEnabled(true);
+                    txtNom.setEnabled(true);
+                    txtTel.setEnabled(true);
+                    txtCorreo.setEnabled(true);
+                    txtComp.setEnabled(true);
+                 }
+                 else{
+                    JOptionPane.showMessageDialog(null,"No existe la compañia "+ compania +" en la Base de datos" );
+                    Limpiar();
+                 }
+                 cn.close();
+            }catch(SQLException e){
                 System.err.println("Error al cargar la información del empleado" + e);
-          JOptionPane.showMessageDialog(null," ERROR al cargar información del proveedor, contacte al administrador ");
-        }
-        
-         }else{
-        
-         JOptionPane.showMessageDialog(null,"Debes de llenar el campo ");
-        Limpiar();
-        }
+                JOptionPane.showMessageDialog(null," ERROR al cargar información del proveedor, contacte al administrador ");
+            }
+         }
     }//GEN-LAST:event_btnBsActionPerformed
 
     /**
@@ -418,12 +347,19 @@ int validacion=0;
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
- public void Limpiar(){   
+ public void Limpiar(){ 
+        txtCop.setText("");
         txtNom.setText("");
         txtCorreo.setText("");
         txtTel.setText("");
         txtComp.setText("");
     
+        btnMod.setEnabled(false);
+        btnMod1.setEnabled(false);
+        txtNom.setEnabled(false);
+        txtTel.setEnabled(false);
+        txtCorreo.setEnabled(false);
+        txtComp.setEnabled(false);
     }
 
 
