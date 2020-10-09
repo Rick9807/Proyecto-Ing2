@@ -39,11 +39,13 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         txtpass = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
         txtUser = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,14 +53,16 @@ public class Login extends javax.swing.JFrame {
         setIconImage(getIconImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtpass.setBackground(new java.awt.Color(255, 204, 255));
         txtpass.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        txtpass.setForeground(new java.awt.Color(204, 51, 255));
+        txtpass.setForeground(new java.awt.Color(102, 102, 102));
         txtpass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtpass.setToolTipText("");
-        txtpass.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtpass.setBorder(null);
         txtpass.setName(""); // NOI18N
-        getContentPane().add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 220, 30));
+        getContentPane().add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 250, 30));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/txt_med700.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 290, -1));
 
         btnIngresar.setBackground(new java.awt.Color(255, 51, 0));
         btnIngresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -105,12 +109,14 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 130, 40));
 
-        txtUser.setBackground(new java.awt.Color(255, 204, 255));
-        txtUser.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txtUser.setForeground(new java.awt.Color(204, 0, 255));
+        txtUser.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        txtUser.setForeground(new java.awt.Color(102, 102, 102));
         txtUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUser.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 220, 30));
+        txtUser.setBorder(null);
+        getContentPane().add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 250, 30));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/txt_med700.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dulceria/dulceria.jpg"))); // NOI18N
@@ -188,6 +194,8 @@ JOptionPane.showMessageDialog(null,"Debes llenar todos los campos");
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtUser;
     private javax.swing.JPasswordField txtpass;
     // End of variables declaration//GEN-END:variables
