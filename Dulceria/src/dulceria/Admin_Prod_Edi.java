@@ -254,13 +254,13 @@ int ID;
         String Nombre = null, Marca = null, Descripcion = null;
         double Precio = 0;
         int Cantidad = 0;
-
-        if(txtNom.getText().equals("") || txtMarc.getText().equals("") || txtDes.getText().equals("") || txtSto.getText().equals("") || txtPre.getText().equals("")){
+        Nombre = txtNom.getText();
+        Marca= txtMarc.getText();
+        Descripcion = txtDes.getText();
+        
+        if(Nombre.equals("") || Marca.equals("") || Descripcion.equals("") || txtSto.getText().equals("") || txtPre.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Todos los campos deben estar llenos");
         }else{
-            Nombre = txtNom.getText();
-            Marca= txtMarc.getText();
-            Descripcion = txtDes.getText();
             Cantidad = Integer.parseInt(txtSto.getText());
             Precio = Double.parseDouble(txtPre.getText());
             try{

@@ -25,10 +25,9 @@ public class Productos extends javax.swing.JFrame {
    
     String proveedor = "";
     
-    
     public Productos() {
         initComponents();
-          setSize(618,517);
+        setSize(618,517);
         setResizable(false);
         this.setLocationRelativeTo(null);//centrar las ventanas
          setIconImage (new ImageIcon(getClass().getResource("mentita.jpg")).getImage());
@@ -48,9 +47,6 @@ public class Productos extends javax.swing.JFrame {
             }catch(Exception e){
                 System.err.println("Error al buscar id_usuario");
          }
-         
-       
-        
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
 ////       jcmbP.removeAllItems();
@@ -61,15 +57,7 @@ public class Productos extends javax.swing.JFrame {
 ////     jcmbP.addItem(Lista);
 ////     
 ////     }
-//this.jcmbP.setModel(con.Ob_Comp());
-       txtNom.setEditable(false);
-       txtMarc.setEditable(false);
-       txtDes.setEditable(false);
-       txtPre.setEditable(false);
-       txtSto.setEditable(false);
-       btnAgregar.setEnabled(false);
-
-        
+//this.jcmbP.setModel(con.Ob_Comp());    
       
     }
 
@@ -140,15 +128,19 @@ public class Productos extends javax.swing.JFrame {
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
 
         txtNom.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtNom.setEnabled(false);
         getContentPane().add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 200, 30));
 
         txtMarc.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtMarc.setEnabled(false);
         getContentPane().add(txtMarc, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 200, 30));
 
         txtDes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtDes.setEnabled(false);
         getContentPane().add(txtDes, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 200, 30));
 
         txtPre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtPre.setEnabled(false);
         txtPre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPreKeyTyped(evt);
@@ -157,6 +149,7 @@ public class Productos extends javax.swing.JFrame {
         getContentPane().add(txtPre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 200, 30));
 
         txtSto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtSto.setEnabled(false);
         txtSto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtStoKeyTyped(evt);
@@ -169,6 +162,7 @@ public class Productos extends javax.swing.JFrame {
         btnAgregar.setBorderPainted(false);
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.setDefaultCapable(false);
+        btnAgregar.setEnabled(false);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -211,7 +205,7 @@ public class Productos extends javax.swing.JFrame {
         btnBs.setContentAreaFilled(false);
         btnBs.setFocusPainted(false);
         btnBs.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_press.png"))); // NOI18N
-        btnBs.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_roll.png"))); // NOI18N
+        btnBs.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_press.png"))); // NOI18N
         btnBs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBsActionPerformed(evt);
@@ -220,7 +214,7 @@ public class Productos extends javax.swing.JFrame {
         getContentPane().add(btnBs, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 120, 40));
 
         txtBus.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txtBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 200, 30));
+        getContentPane().add(txtBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 260, 30));
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,166 +228,66 @@ public class Productos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-       
       dispose();
         new Admim_Productos().setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
 
-    
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
      String nombre="", marca="", descripcion="", prueba="", comp="";
      double precio=0;
-     int Stock=0, validacion =0;
+     int Stock=0;
      String prove="";
-     //prove= p.Compania;
      txtCompania.setText(proveedor1);
-      
+     nombre = txtNom.getText();
+     marca= txtMarc.getText();
+     descripcion = txtDes.getText();
      
-//     proveedor = jcmbP.getSelectedIndex()+1;
-       
-     
-      
-     if(txtNom.getText().equals("")){
-             validacion++;
-     JOptionPane.showMessageDialog(null,"El campo Nombre está vacio");
+     if(nombre.equals("") || marca.equals("") || descripcion.equals("") || txtSto.getText().equals("") || txtPre.getText().equals("")){
+        JOptionPane.showMessageDialog(null,"Todos los campos deben esta llenos");
      }else{
-        nombre = txtNom.getText();
          txtCompania.setText(prove);
-        }
-   if(txtMarc.getText().equals("")){
-        validacion++;
-        JOptionPane.showMessageDialog(null,"El campo Marca está vacio");
-   }else{
-        marca= txtMarc.getText();
-         txtCompania.setText(prove);
-        }
-    if(txtDes.getText().equals("")){
-       validacion++;
-        JOptionPane.showMessageDialog(null,"El campo Descripción está vacio");
+         Stock = Integer.parseInt(txtSto.getText());
+         precio = Double.parseDouble(txtPre.getText());
+         try {
+            Connection cn = Conexion.conectar();
+            PreparedStatement pat = cn.prepareStatement(
+             "select nombre from productos where nombre = '" + nombre + "'");
+              ResultSet rs = pat.executeQuery();
+              if(rs.next()){
+                JOptionPane.showMessageDialog(null," El nombre ingresado pertence a otro producto en existencia"); 
+              }else{
+                    try{
+                        Connection cn2 = Conexion.conectar();
+                        PreparedStatement pat2 = cn2.prepareStatement(
+                                "insert into productos values(?,?,?,?,?,?,?,?)");
 
-   }else{
-       descripcion = txtDes.getText();
-        txtCompania.setText(prove);
-        }
-     if(txtSto.getText().equals("")){
-       validacion++;
-        JOptionPane.showMessageDialog(null,"El campo Stock está vacio");
+                        pat2.setInt(1,0);
+                        pat2.setString(2,nombre);
+                        pat2.setString(3,marca);
+                        pat2.setString(4,descripcion);
+                        pat2.setDouble(5,precio);
+                        pat2.setInt(6,Stock);
+                        pat2.setInt(7,id_usuario);
+                        pat2.setString(8,proveedor);
 
-   }else{
-      Stock = Integer.parseInt(txtSto.getText());
-       txtCompania.setText(prove);
-        }
-     if(txtPre.getText().equals("")){
-       validacion++;
-        JOptionPane.showMessageDialog(null,"El campo Precio está vacio");
+                        pat2.executeUpdate();
+                        cn2.close();
+                        Limpiar();
 
-   }else{
-     precio = Double.parseDouble(txtPre.getText());
-      txtCompania.setText(prove);
-        }
-    // txtCompania.setText(prove);
-//     if(txtCompania.getText().equals("")){
-//       validacion++;
-//        JOptionPane.showMessageDialog(null,"El campo Compania está vacio");
-//
-//   }else{
-//     comp=txtCompania.getText();
-//        }
-     
-     
-     //prove= Integer.toString(proveedor);
-     
-//     if(proveedor == 1){
-//        prueba ="Seleccionar";
-//        
-//        }else if(proveedor == 2){
-//        prueba ="Pendiente";
-//        
-//        }
-     
-//     nombre= txtNom.getText().trim();
-//     marca = txtMarc.getText().trim();
-//     descripcion= txtDes.getText().trim();
-//     proveedor = jcmbP.getSelectedIndex()+1;
-//     Stock = Integer.parseInt(txtSto.getText().trim());
-//     precio = Float.parseFloat(txtPre.getText().trim());
-  
-  try {
-           Connection cn = Conexion.conectar();
-        PreparedStatement pat = cn.prepareStatement(
-            "select nombre from productos where nombre = '" + nombre + "'");
-             ResultSet rs = pat.executeQuery();
-             if(rs.next()){
-             txtNom.setBackground(Color.yellow);
-             JOptionPane.showMessageDialog(null," El nombre ingresado pertence a otro producto en existencia");
-             txtNom.setBackground(Color.WHITE);
-             cn.close();
-             //txtCompania.setText(prove);
-             }else{
-    // Connection cn = Conexion.conectar();
-     
-     if(validacion == 0){
-        
-     try{
-         
-         PreparedStatement pat2 = cn.prepareStatement(
-                 "insert into productos values(?,?,?,?,?,?,?,?)");
-         
-         pat2.setInt(1,0);
-         pat2.setString(2,nombre);
-         pat2.setString(3,marca);
-         pat2.setString(4,descripcion);
-         pat2.setDouble(5,precio);
-         pat2.setInt(6,Stock);
-         pat2.setInt(7,id_usuario);
-         pat2.setString(8,proveedor);
-       
-        
-      
-         
-//
-pat2.executeUpdate();
-cn.close();
-Limpiar();
-
-
-
-JOptionPane.showMessageDialog(null,"Producto almacenado con exito");
- txtNom.setEditable(false);
-       txtMarc.setEditable(false);
-       txtDes.setEditable(false);
-       txtPre.setEditable(false);
-       txtSto.setEditable(false);
-       btnAgregar.setEnabled(false);
-       btnBs.setEnabled(true);
-       txtBus.setEditable(true);
-
-//this.dispose();
-
-     }catch(SQLException e){
-         
-         System.err.println("Error al registrar Producto" + e);
-         JOptionPane.showMessageDialog(null," ERROR al registrar, contacte al administrador ");
-     }
-               
-                  
-     }else{
-                  JOptionPane.showMessageDialog(null,"Debes de llenar todos los campos ");
-                 //txtCompania.setText(prove);
+                        JOptionPane.showMessageDialog(null,"Producto almacenado con exito");
+                        
+                    }catch(SQLException e){
+                        System.err.println("Error al registrar Producto" + e);
+                        JOptionPane.showMessageDialog(null," ERROR al registrar, contacte al administrador ");
                     }
-     
-             }
-     }catch(SQLException e){
-        System.err.println("Error en validar el usuario" + e);
-          JOptionPane.showMessageDialog(null," ERROR al comparar usuario, contacte al administrador ");
-            }
-              
-          
-     
-     
-        
-        
-    
+                }
+            cn.close();
+        }catch(SQLException e){
+           System.err.println("Error en validar el usuario" + e);
+           JOptionPane.showMessageDialog(null," ERROR al comparar usuario, contacte al administrador ");
+        }
+      }
+  
     }//GEN-LAST:event_btnAgregarActionPerformed
     
     private void txtStoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStoKeyTyped
@@ -408,53 +302,38 @@ JOptionPane.showMessageDialog(null,"Producto almacenado con exito");
     }//GEN-LAST:event_txtPreKeyTyped
 
     private void btnBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBsActionPerformed
-       int val=0;
-        txtBus.getText().trim();
-        
-        if(txtBus.getText().equals("")){
-            
-         val++;   
-            
-        }
-        
-       if(val==0){
-         
-        try{
-             Connection cn = Conexion.conectar();
-             
-             
-             proveedor= txtBus.getText();
-             
-             PreparedStatement pat = cn.prepareStatement(
-                "select compania from proovedores where compania= '" + proveedor + "'");
-             ResultSet rs =pat.executeQuery();
-                if(rs.next()){
-                 proveedor1 = rs.getString("compania");
-                 txtCompania.setText(proveedor1);
-                 
-       txtNom.setEditable(true);
-       txtMarc.setEditable(true);
-       txtDes.setEditable(true);
-       txtPre.setEditable(true);
-       txtSto.setEditable(true);
-       btnAgregar.setEnabled(true);
-       btnBs.setEnabled(false);
-       txtBus.setEditable(false);
-       
+
+       proveedor = txtBus.getText();        
+        if(proveedor.equals("")){
+            JOptionPane.showMessageDialog(null, "Debe llenar el campo requerido");
+            txtBus.setBackground(Color.yellow);
+        }else{
+            txtBus.setBackground(Color.white);
+            try{
+                 Connection cn = Conexion.conectar();
+
+                 PreparedStatement pat = cn.prepareStatement(
+                    "select compania from proovedores where compania= '" + proveedor + "'");
+                 ResultSet rs =pat.executeQuery();
+                    if(rs.next()){
+                       proveedor1 = rs.getString("compania");
+                       txtCompania.setText(proveedor1);
+
+                       txtNom.setEnabled(true);
+                       txtMarc.setEnabled(true);
+                       txtDes.setEnabled(true);
+                       txtPre.setEnabled(true);
+                       txtSto.setEnabled(true);
+                       btnAgregar.setEnabled(true);
                     }
-                else{
-                 JOptionPane.showMessageDialog(null,"No se encontró la compania en la BD");
+                    else{
+                     JOptionPane.showMessageDialog(null,"No se encontró la compania en la BD");
+                    }
+                }catch(Exception e){
+                    System.err.println("Error al buscar id_usuario");
+                    JOptionPane.showMessageDialog(null,"Error, no se encontro el proveedor");
                 }
-            }catch(Exception e){
-                System.err.println("Error al buscar id_usuario");
-         }
-       }else{
-       
-       JOptionPane.showMessageDialog(null,"El campo está vacio");
-       
        }
-         
-        
     }//GEN-LAST:event_btnBsActionPerformed
 
     /**
@@ -516,12 +395,21 @@ JOptionPane.showMessageDialog(null,"Producto almacenado con exito");
     // End of variables declaration//GEN-END:variables
  public void Limpiar(){
     
-                    txtNom.setText("");
-                    txtMarc.setText("");
-                    txtDes.setText("");
-                    txtPre.setText("");;
-                    txtSto.setText("");
-                    txtCompania.setText("");
+        txtBus.setText("");
+        txtCompania.setText("");
+        txtNom.setText("");
+        txtMarc.setText("");
+        txtDes.setText("");
+        txtPre.setText("");;
+        txtSto.setText("");
+        txtCompania.setText("");
+        
+        txtNom.setEnabled(false);
+        txtMarc.setEnabled(false);
+        txtDes.setEnabled(false);
+        txtPre.setEnabled(false);
+        txtSto.setEnabled(false);
+        btnAgregar.setEnabled(false);
     
         }
 
