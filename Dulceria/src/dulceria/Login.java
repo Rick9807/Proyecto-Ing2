@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
     
-    public static String user= "";
+    public static String user= "", perm="";
     String pass= "";
 
     public Login() {
@@ -130,7 +130,6 @@ public class Login extends javax.swing.JFrame {
 
 user = txtUser.getText().trim();
 pass = txtpass.getText().trim();
-
 if(!user.equals("") || !pass.equals("")){
 
     try{
@@ -143,7 +142,7 @@ if(!user.equals("") || !pass.equals("")){
         if(rs.next()){
             
             String puesto = rs.getString("puesto");
-            
+            perm = puesto;
             
             if(puesto.equalsIgnoreCase("Jefe")){
                 dispose();

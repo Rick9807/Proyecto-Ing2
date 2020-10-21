@@ -2,6 +2,7 @@
 package dulceria;
 import java.sql.*;
 import Clases.Conexion;
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.WindowConstants;
 import java.awt.event.MouseAdapter;
@@ -124,11 +125,11 @@ public class Usuarios_Busqueda extends javax.swing.JFrame {
                 btnConsultarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 110, 40));
+        getContentPane().add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 110, 40));
 
         txtBuscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 160, 30));
+        getContentPane().add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 210, 30));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -152,16 +153,17 @@ public class Usuarios_Busqueda extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-limpiarTabla();
-       String cons=""; int validacion=0;
+
+       String cons="";
       cons=txtBuscar.getText().trim();
       
       if(txtBuscar.getText().equals("")){
-      validacion++;
-        
-      }
-      if(validacion == 0){
+       txtBuscar.setBackground(Color.yellow);
+       JOptionPane.showMessageDialog(null, "Debes ingresar el puesto que desea buscar");
+      }else{
+          txtBuscar.setBackground(Color.white);
       try{
+        limpiarTabla();
         Connection cn2 = Conexion.conectar();
            PreparedStatement pat2 = cn2.prepareStatement(
            "select id_usuario, nombre, apellidos, edad, sexo, telefono, puesto, usuario from usuarios"
@@ -179,26 +181,14 @@ limpiarTabla();
                     }
                 model.addRow(filas);
                 }
-           
-        
-           cn2.close();
+            cn2.close();
             }catch(SQLException e){
             System.err.println("No se pudo mostrar la tabla" + e);
             
             JOptionPane.showMessageDialog(null, "Error al mostrar la información / Contacte al Administrador");
                 }
       
-      }else{
-      
-      JOptionPane.showMessageDialog(null,"Debes de llenar el campo");
-      
-      
-      }
-                
-   
-         
-        
-        
+      }   
     }//GEN-LAST:event_btnConsultarActionPerformed
 public void limpiarTabla(){
         for (int i = 0; i < model.getRowCount(); i++) {

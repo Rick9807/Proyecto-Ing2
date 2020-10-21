@@ -2,6 +2,7 @@
 package dulceria;
 import java.sql.*;
 import Clases.Conexion;
+import java.awt.Color;
 import javax.swing.WindowConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -21,9 +22,7 @@ public class Registro_Ventas extends javax.swing.JFrame {
         setResizable(false);
         this.setLocationRelativeTo(null);//centrar las ventanas
          setIconImage (new ImageIcon(getClass().getResource("mentita.jpg")).getImage());
- 
         setTitle("Empleados registrados - Sesión de "+ user);
-        
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         try{
@@ -92,13 +91,13 @@ public class Registro_Ventas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(Tabla);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 550, 290));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 550, 290));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Registro de Ventas");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, -1));
-        getContentPane().add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 150, 30));
+        getContentPane().add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 180, 30));
 
         btnBus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesBotones/comprobar_norm.png"))); // NOI18N
         btnBus.setBorder(null);
@@ -112,7 +111,7 @@ public class Registro_Ventas extends javax.swing.JFrame {
                 btnBusActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 120, 40));
+        getContentPane().add(btnBus, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 120, 40));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salir_norm.png"))); // NOI18N
         btnSalir.setBorder(null);
@@ -126,7 +125,7 @@ public class Registro_Ventas extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, 110, 40));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, 110, 40));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -147,22 +146,22 @@ public class Registro_Ventas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusActionPerformed
-      limpiarTabla();
-       String cons=""; int validacion=0;
+      String cons=""; 
       cons=txtDate.getText().trim();
       
       if(txtDate.getText().equals("")){
-      validacion++;
-        
-      }
+        txtDate.setBackground(Color.yellow);
+        JOptionPane.showMessageDialog(null, "Debes ingresar la fecha que desea buscar");
+      }else{
+          txtDate.setBackground(Color.white);
       try{
+        limpiarTabla();
         Connection cn2 = Conexion.conectar();
            PreparedStatement pat2 = cn2.prepareStatement(
            "select id_venta,id_cliente,id_usuario,fecha_venta, total from ventas"
                    + " where fecha_venta = '"+ cons +"'");
       
            ResultSet rs= pat2.executeQuery();
-            
             
             jScrollPane1.setViewportView(Tabla);
          
@@ -174,14 +173,12 @@ public class Registro_Ventas extends javax.swing.JFrame {
                     }
                 model.addRow(filas);
                 }
-                    cn2.close();
-            
-            }catch(SQLException e){
+        cn2.close();    
+        }catch(SQLException e){
             System.err.println("No se pudo mostrar la tabla" + e);
-            
             JOptionPane.showMessageDialog(null, "Error al mostrar la información / Contacte al Administrador");
-                }
-        
+        }
+      }
     }//GEN-LAST:event_btnBusActionPerformed
 
      public void limpiarTabla(){

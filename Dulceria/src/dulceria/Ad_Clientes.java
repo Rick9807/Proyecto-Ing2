@@ -309,8 +309,11 @@ public static String user_update = "";
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
-        
-        new Ad_Ventas().setVisible(true);
+        if(Login.perm.equalsIgnoreCase("Jefe")){
+          new Ad_Ventas().setVisible(true);
+        }else{
+          new Empleado_Ad_Ventas().setVisible(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed

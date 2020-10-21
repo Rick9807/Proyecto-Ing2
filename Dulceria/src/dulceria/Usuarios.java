@@ -194,7 +194,7 @@ String user;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       int puesto_cmb, sexo , validacion =0;
+       int puesto_cmb = 0, sexo = 0 , validacion =0;
         
         String edad ,nombre, apellidos, telefono,correo , contrasena, permisos_string ="", permisos="";
         
@@ -206,120 +206,61 @@ String user;
         puesto_cmb = cmbP.getSelectedIndex()+1;
         sexo = cmbsx.getSelectedIndex()+1;
         edad = txtedad.getText();
- 
-        
-        
-        if(correo.equals("")){
-        
-            txtMail.setBackground(Color.WHITE);
-            validacion++;
-            JOptionPane.showMessageDialog(null, "El campo Usuario esta vacio");
-        }if(contrasena.equals("")){
-        
-            txtPass.setBackground(Color.WHITE);
-            validacion++;
-        }
-        if(nombre.equals("")){
-        
-            txtnom.setBackground(Color.WHITE);
-            validacion++;
-        }
-        if(apellidos.equals("")){
-        
-            txtape.setBackground(Color.WHITE);
-            validacion++;
-        }if(telefono.equals("")){
-        
-            txtTel.setBackground(Color.WHITE);
-            validacion++;
-        }if(edad.equals("")){
-        
-            txtedad.setBackground(Color.WHITE);
-            validacion++;
-        }if(puesto_cmb == 1){
-        permisos_string ="Empleado";
-        
-        
-        }else if(puesto_cmb == 2){
-        permisos_string ="Jefe";
-        
-        }
-        if(sexo == 1){
-        permisos ="F";
-        
-        }else if(sexo == 2){
-        permisos ="M";
-        
-        }
-   
 
-        
-        try {
-           Connection cn = Conexion.conectar();
-        PreparedStatement pat = cn.prepareStatement(
-            "select usuario from usuarios where usuario = '" + correo + "'");
-             ResultSet rs = pat.executeQuery();
-             if(rs.next()){
-             txtMail.setBackground(Color.yellow);
-             JOptionPane.showMessageDialog(null," El usuario ingresado pertence a otro empleado");
-             cn.close();
-             
-             }else{
-             
-                 if(validacion == 0){
-                 
-                     try{
-                     
-                      PreparedStatement pat2 = cn.prepareStatement(
-                        "insert into usuarios values(?,?,?,?,?,?,?,?,?)");
-                      
-                        pat2.setInt(1,0);
-                        pat2.setString(2,nombre);
-                        pat2.setString(3,apellidos);
-                        pat2.setString(4,edad);
-                        pat2.setString(5,permisos);
-                        pat2.setString(6,telefono);
-                        pat2.setString(7,permisos_string);
-                        pat2.setString(8,correo);
-                        pat2.setString(9,contrasena);
-                        
-//                         
-                    pat2.executeUpdate();
+        if(correo.equals("") || contrasena.equals("") || nombre.equals("") || apellidos.equals("") || telefono.equals("") || edad.equals("")){
+            JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos");
+            txtMail.setBackground(Color.white);
+        }else{
+            if(puesto_cmb == 1){
+                permisos_string ="Empleado";
+            }else if(puesto_cmb == 2){
+                permisos_string ="Jefe";
+            }
+            if(sexo == 1){
+                permisos ="F";
+            }else if(sexo == 2){
+                permisos ="M";
+            }
+            try {
+               txtMail.setBackground(Color.white);
+               Connection cn = Conexion.conectar();
+                PreparedStatement pat = cn.prepareStatement(
+                "select usuario from usuarios where usuario = '" + correo + "'");
+                 ResultSet rs = pat.executeQuery();
+                 if(rs.next()){
+                    txtMail.setBackground(Color.yellow);
+                    JOptionPane.showMessageDialog(null," El usuario ingresado pertence a otro empleado, por favor ingrese otro");
                     cn.close();
-                    
-                    Limpiar();
-                    
-                    
-//                    txtMail.setBackground(Color.PINK);
-//                    txtPass.setBackground(Color.PINK);
-//                    txtnom.setBackground(Color.PINK);
-//                    txtape.setBackground(Color.PINK);
-//                    txtTel.setBackground(Color.PINK);
-//                    cmbP.setBackground(Color.PINK);
-//                    cmbsx.setBackground(Color.PINK);
-//                    txtedad.setBackground(Color.PINK);
-//                   
-                    
-                    JOptionPane.showMessageDialog(null,"Empleado almacenado con exito");
-                    //this.dispose();
-                    
-                        }catch(SQLException e){
-                            
-                     System.err.println("Error al registrar usuario" + e);
-                      JOptionPane.showMessageDialog(null," ERROR al registrar, contacte al administrador ");
-                     }
-                     
-                    }else{
-                  JOptionPane.showMessageDialog(null,"Debes de llenar todos los campos ");
-                 
+                 }else{
+                    try{  
+                     PreparedStatement pat2 = cn.prepareStatement(
+                       "insert into usuarios values(?,?,?,?,?,?,?,?,?)");
+
+                       pat2.setInt(1,0);
+                       pat2.setString(2,nombre);
+                       pat2.setString(3,apellidos);
+                       pat2.setString(4,edad);
+                       pat2.setString(5,permisos);
+                       pat2.setString(6,telefono);
+                       pat2.setString(7,permisos_string);
+                       pat2.setString(8,correo);
+                       pat2.setString(9,contrasena);
+
+                       pat2.executeUpdate();
+
+                        Limpiar();
+                        cn.close();
+                        JOptionPane.showMessageDialog(null,"Empleado almacenado con exito");
+                       }catch(SQLException e){
+                         System.err.println("Error al registrar usuario" + e);
+                         JOptionPane.showMessageDialog(null," ERROR al registrar, contacte al administrador " + e);
                     }
               }
-             
             }catch(SQLException e){
-        System.err.println("Error en validar el usuario" + e);
-          JOptionPane.showMessageDialog(null," ERROR al comparar usuario, contacte al administrador ");
+                System.err.println("Error en validar el usuario" + e);
+                JOptionPane.showMessageDialog(null," ERROR al comparar usuario, contacte al administrador ");
             }
-       
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -389,17 +330,15 @@ String user;
 
     
     public void Limpiar(){
-    
-                    txtMail.setText("");
-                    txtPass.setText("");
-                    txtnom.setText("");
-                    txtape.setText("");;
-                    txtTel.setText("");
-                    cmbP.setSelectedIndex(0);
-                    cmbsx.setSelectedIndex(0);
-                    txtedad.setText("");
-    
-        }
+        txtMail.setText("");
+        txtPass.setText("");
+        txtnom.setText("");
+        txtape.setText("");;
+        txtTel.setText("");
+        cmbP.setSelectedIndex(0);
+        cmbsx.setSelectedIndex(0);
+        txtedad.setText("");
+    }
 
 
 }
