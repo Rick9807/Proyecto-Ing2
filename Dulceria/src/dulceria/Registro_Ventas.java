@@ -140,9 +140,11 @@ public class Registro_Ventas extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
      dispose();
-     new Ad_Ventas().setVisible(true);
-        
-        
+     if(Login.perm.equalsIgnoreCase("Jefe")){
+          new Ad_Ventas().setVisible(true);
+        }else{
+          new Empleado_Ad_Ventas().setVisible(true);
+        }   
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusActionPerformed

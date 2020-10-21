@@ -427,7 +427,11 @@ txt.setText(ss);
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         dispose();
-        new Ad_Ventas().setVisible(true);
+        if(Login.perm.equalsIgnoreCase("Jefe")){
+          new Ad_Ventas().setVisible(true);
+        }else{
+          new Empleado_Ad_Ventas().setVisible(true);
+        } 
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

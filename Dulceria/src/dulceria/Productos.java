@@ -229,7 +229,11 @@ public class Productos extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
       dispose();
-        new Admim_Productos().setVisible(true);
+      if(Login.perm.equalsIgnoreCase("Jefe")){
+          new Admim_Productos().setVisible(true);
+        }else{
+          new Empleados_Productos().setVisible(true);
+        }   
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed

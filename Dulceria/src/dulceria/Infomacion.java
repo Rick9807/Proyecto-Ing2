@@ -99,6 +99,11 @@ public class Infomacion extends javax.swing.JFrame {
 
     private void btnEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEActionPerformed
         dispose();
+        if(Login.perm.equalsIgnoreCase("Jefe")){
+          new Ad_Confg().setVisible(true);
+        }else{
+          new EmAd_Confg1().setVisible(true);
+        } 
     }//GEN-LAST:event_btnEActionPerformed
 
     /**

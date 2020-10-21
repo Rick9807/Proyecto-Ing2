@@ -126,8 +126,13 @@ public class Emp_Usuarios_Busq extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExActionPerformed
-                dispose();
-                new Empleados().setVisible(true);
+        dispose();
+        if(Login.perm.equalsIgnoreCase("Jefe")){
+          //new Ad_Confg().setVisible(true);
+        }else{
+          new Empleados().setVisible(true);
+        } 
+        
     }//GEN-LAST:event_btnExActionPerformed
 
     /**

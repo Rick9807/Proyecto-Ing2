@@ -155,8 +155,12 @@ int ID;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExActionPerformed
-         dispose();
-        new Ad_Confg().setVisible(true);
+        dispose();
+        if(Login.perm.equalsIgnoreCase("Jefe")){
+          new Ad_Confg().setVisible(true);
+        }else{
+          new EmAd_Confg1().setVisible(true);
+        } 
     }//GEN-LAST:event_btnExActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed

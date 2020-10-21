@@ -124,7 +124,12 @@ public class Ad_Pro_Mostrar extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         dispose();
-        new Admin_Proveedores().setVisible(true);
+        if(Login.perm.equalsIgnoreCase("Jefe")){
+          new Admin_Proveedores().setVisible(true);
+        }else{
+          new Empleados().setVisible(true);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
