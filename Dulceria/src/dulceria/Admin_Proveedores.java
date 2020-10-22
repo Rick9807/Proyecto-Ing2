@@ -1,17 +1,31 @@
-
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de menu de provedores
+///Declaracion de librerias a usar
 package dulceria;
 import java.sql.*;
 import Clases.Conexion;
 import javax.swing.ImageIcon;
 import javax.swing.WindowConstants;
 
+//Declararcion de la clase 
 
 public class Admin_Proveedores extends javax.swing.JFrame {
+//Declararcion de la variables 
 
    String user;
     public Admin_Proveedores() {
         initComponents();
-        
+        //Diseño de la pagina
+
          setSize(616,450);
         setResizable(false);
         this.setLocationRelativeTo(null);//centrar las ventanas
@@ -120,24 +134,28 @@ public class Admin_Proveedores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de agregar provedor
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         dispose();
+        //Redireccionar
         new Ad_Proveedores().setVisible(true);
     }//GEN-LAST:event_btnAddActionPerformed
-
+//Boton de modificar provedor
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         dispose();
+        //Redireccionar
         new Admin_Prov_Edi().setVisible(true);
     }//GEN-LAST:event_btnEditActionPerformed
-
+//Boton de ver provedores
     private void btnProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProActionPerformed
        dispose();
+       //Redireccionar
        new Ad_Pro_Mostrar().setVisible(true);
     }//GEN-LAST:event_btnProActionPerformed
-
+//Boton de salir de la pestaña al menu anterior
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         dispose();
+        //Retornar a pestaña anterior
        new Administrador().setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
 

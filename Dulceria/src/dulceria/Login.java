@@ -1,3 +1,15 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de login de usuario
+///Declaracion de librerias a usar
 
 package dulceria;
 
@@ -11,14 +23,18 @@ import Clases.Conexion;
 
 import javax.swing.JOptionPane;
 
+//Declararcion de la clase 
 
 public class Login extends javax.swing.JFrame {
-    
+    //Declararcion de la variables 
+
     public static String user= "", perm="";
     String pass= "";
 
     public Login() {
         initComponents();
+        //Diseño de la pagina
+
         setSize(641,600);
         setResizable(false);
         this.setLocationRelativeTo(null);
@@ -126,24 +142,32 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+//Boton de Ingreso a la aplicacion
+
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+//Declararcion de la variables 
 
 user = txtUser.getText().trim();
 pass = txtpass.getText().trim();
+//Validar campos vacios
+
 if(!user.equals("") || !pass.equals("")){
+//Varificar el acceso a la base de datos
 
     try{
         Connection en = Conexion.conectar();
         PreparedStatement pat = en.prepareStatement(
+                //Obtener la informacion del registro
             "select puesto from usuarios where usuario = '" + user
             + "' and password = '"+ pass + "'");
         
         ResultSet rs= pat.executeQuery();
         if(rs.next()){
-            
+            //Obtener valores del puesto
             String puesto = rs.getString("puesto");
             perm = puesto;
-            
+            //Verifica los permisos del usuario
+
             if(puesto.equalsIgnoreCase("Jefe")){
                 dispose();
                 new Administrador().setVisible(true);
@@ -153,6 +177,7 @@ if(!user.equals("") || !pass.equals("")){
                 } 
             
             }else{
+            //Mensajes de error
              JOptionPane.showMessageDialog(null,"Datos de acceso incorrectos");
              txtUser.setText("");
              txtpass.setText("");
@@ -170,9 +195,10 @@ JOptionPane.showMessageDialog(null,"Debes llenar todos los campos");
 
 
     }//GEN-LAST:event_btnIngresarActionPerformed
-
+//Boton de salir de la aplicacion
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-       if(JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea salir?") == 0)
+       //Verificaccion de salida
+        if(JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea salir?") == 0)
             System.exit(0);
        
     }//GEN-LAST:event_btnExitActionPerformed

@@ -1,3 +1,15 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de informacion
+///Declaracion de librerias a usar
 
 package dulceria;
 import java.sql.*;
@@ -6,12 +18,15 @@ import Clases.Conexion;
 import javax.swing.ImageIcon;
 import javax.swing.WindowConstants;
 
+//Declararcion de la clase 
 
 public class Infomacion extends javax.swing.JFrame {
 
   
     public Infomacion() {
         initComponents();
+        //Diseño de la pagina
+
          setSize(439,478);
         setResizable(false);
         this.setLocationRelativeTo(null);//centrar las ventanas
@@ -96,12 +111,18 @@ public class Infomacion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de salir de la pestaña al menu anterior
     private void btnEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEActionPerformed
         dispose();
+        //Verifica los permisos del usuario
+
         if(Login.perm.equalsIgnoreCase("Jefe")){
+            //Retornar a pestaña anterior
+
           new Ad_Confg().setVisible(true);
         }else{
+            //Retornar a pestaña anterior
+
           new EmAd_Confg1().setVisible(true);
         } 
     }//GEN-LAST:event_btnEActionPerformed

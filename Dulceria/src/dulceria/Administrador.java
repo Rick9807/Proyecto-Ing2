@@ -1,3 +1,15 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de menu principal
+///Declaracion de librerias a usar
 
 package dulceria;
 
@@ -6,8 +18,10 @@ import java.sql.*;
 import Clases.Conexion;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+//Declararcion de la clase 
 
 public class Administrador extends javax.swing.JFrame {
+//Declararcion de la variables 
 
     String user, nombre_usuario;
     public static int sesion_usuario;
@@ -17,7 +31,8 @@ public class Administrador extends javax.swing.JFrame {
         initComponents();
         user = Login.user;
         sesion_usuario = 1; 
-        
+        //Diseño de la pagina
+
         setSize(625,451);
         setResizable(false);
         this.setLocationRelativeTo(null);//centrar las ventanas
@@ -25,10 +40,12 @@ public class Administrador extends javax.swing.JFrame {
          setIconImage (new ImageIcon(getClass().getResource("mentita.jpg")).getImage());
     
          setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-         
+         //Varificar el acceso a la base de datos
+
          try{
              Connection cn = Conexion.conectar();
              PreparedStatement pat = cn.prepareStatement(
+                     //Obtener informacion de usuario
                 "select nombre from usuarios where usuario= '" + user + "'");
              ResultSet rs =pat.executeQuery();
                 if(rs.next()){
@@ -182,40 +199,49 @@ public class Administrador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+//Boton de cierre de secion 
 
     private void btnSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSesionActionPerformed
         if(JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea cerrar sesion?") == 0){
             dispose();
+            //Retornar a pestaña anterior
             new Login().setVisible(true);
         }
     }//GEN-LAST:event_btnSesionActionPerformed
+//Boton de menu de productos
 
     private void btnProdcutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdcutosActionPerformed
                  dispose();
+                 //Redireccionar a menu de productos
                 new Admim_Productos().setVisible(true);
         
     }//GEN-LAST:event_btnProdcutosActionPerformed
-
+//Boton de menu de empleado
     private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
         dispose();
+        //Redireccionar a menu de emplesdo
         new Admin_Empleados().setVisible(true);
     }//GEN-LAST:event_btnEmpleadosActionPerformed
-
+//Boton de menu de provedores
     private void btnProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedorActionPerformed
                 dispose();
+                //Redireccionar a menu de provedores
                 new Admin_Proveedores().setVisible(true);        
         
         
     }//GEN-LAST:event_btnProveedorActionPerformed
+//Boton de configuracion
 
     private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
 dispose();
+//Redireccionar
             new Ad_Confg().setVisible(true);
         
     }//GEN-LAST:event_btnConfiguracionActionPerformed
-
+//Boton de menu de ventas
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
       dispose();
+      //Redireccionar a menu de ventas
       new Ad_Ventas().setVisible(true);
     }//GEN-LAST:event_btnVentasActionPerformed
 

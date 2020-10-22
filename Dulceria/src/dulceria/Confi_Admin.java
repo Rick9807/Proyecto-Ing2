@@ -1,3 +1,15 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de configuracion de administrdor cambio de contraseña
+///Declaracion de librerias a usar
 
 package dulceria;
 import java.sql.*;
@@ -7,14 +19,18 @@ import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+//Declararcion de la clase 
 
 public class Confi_Admin extends javax.swing.JFrame {
-String user, usuario, nombre, pass;
+//Declararcion de la variables 
+
+    String user, usuario, nombre, pass;
 int ID;
    
     public Confi_Admin() {
         initComponents();
-             
+             //Diseño de la pagina
+
         setSize(586,511);
         setResizable(false);
         this.setLocationRelativeTo(null);//centrar las ventanas
@@ -153,28 +169,40 @@ int ID;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de salir de la pestaña al menu anterior
     private void btnExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExActionPerformed
         dispose();
+        //Verifica los permisos del usuario
+
         if(Login.perm.equalsIgnoreCase("Jefe")){
+            //Retornar a pestaña anterior como jefe
           new Ad_Confg().setVisible(true);
         }else{
+            //Retornar a pestaña anterior
           new EmAd_Confg1().setVisible(true);
         } 
     }//GEN-LAST:event_btnExActionPerformed
 
+//Boton de modificar y guardar cambio de contraseña
+
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-       String New="", New1="";
+       //Declararcion de la variables 
+
+        String New="", New1="";
        
         New = txt1.getText().trim();
         New1 = txt2.getText().trim();
-      
+      //Validar campos vacios
+
        if(!New.equals("") && !New1.equals("")){
            if(New.equals(New1)){
+               //Varificar el acceso a la base de datos
+
                 try{
                 Connection cn = Conexion.conectar();
 
                 PreparedStatement pat = cn.prepareStatement(
+                        //Actualizar el registro
                     "update usuarios set password=? where usuario = '"+ user +"'");
                      pat.setString(1,New);
 
@@ -204,24 +232,31 @@ int ID;
         
         
     }//GEN-LAST:event_btnEditActionPerformed
-
+//Boton de buscar ycomprobar si existe el usuario
     private void btnBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusActionPerformed
+       //Declararcion de la variables 
+
         pass = txtP.getText();
         
+        //Validar campos vacios
+
         if(pass.equals("")){
             JOptionPane.showMessageDialog(null, "Debe llenar el campo requerido");
             txtP.setBackground(Color.yellow);
         }else{
             txtP.setBackground(Color.white);
+            //Varificar el acceso a la base de datos
+
             try{
                 Connection cn = Conexion.conectar();
+                //Obneter infoemacion del ususario
                 PreparedStatement pat = cn.prepareStatement(
                 "select usuario, password from usuarios where usuario = '" + user + "' and password = '"+ pass + "'");
                 ResultSet rs = pat.executeQuery();
 
              if(rs.next()){
                 JOptionPane.showMessageDialog(null,"Datos correctos ");  
-                
+                //Ver informacion
                 txt1.setEditable(true);
                 txt2.setEditable(true);
                 btnEdit.setEnabled(true);
@@ -300,7 +335,8 @@ int ID;
     private javax.swing.JPasswordField txtP;
     private javax.swing.JTextField txtUs;
     // End of variables declaration//GEN-END:variables
- public void Limpiar(){
+ //Funcion de limpiar las cajas de texto
+    public void Limpiar(){
 
      txtP.setEditable(true);
      txtP.setText("");

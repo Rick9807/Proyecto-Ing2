@@ -1,3 +1,15 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de mostrar usuarios
+///Declaracion de librerias a usar
 
 package dulceria;
 
@@ -11,13 +23,17 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
+//Declararcion de la clase 
 
 public class Emp_Usuarios_Busq extends javax.swing.JFrame {
-   
+   //Declararcion de la variables 
+
    String user;
    public static String user_update = "";
    int ID;
    DefaultTableModel model2 = new DefaultTableModel();
+   //Diseño de la pagina
+
     public Emp_Usuarios_Busq() {
         initComponents();
      user = Login.user;
@@ -29,17 +45,19 @@ public class Emp_Usuarios_Busq extends javax.swing.JFrame {
         setTitle("Usuarios  - Sesión de "+ user);
         
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
+        //Varificar el acceso a la base de datos
+
         try{
         
             Connection cn = Conexion.conectar();
              PreparedStatement pat = cn.prepareStatement(
+                     //Obtener info del registro
               "select id_usuario, nombre, apellidos, edad, sexo, telefono, puesto, usuario from usuarios");
             ResultSet rs = pat.executeQuery();
             
             table_user = new JTable(model2);
             jScrollPane1.setViewportView(table_user);
-            
+            //Llenar campos
             model2.addColumn("Id_Usuarios");
             model2.addColumn("Nombre");
             model2.addColumn("Apellidos");
@@ -50,7 +68,7 @@ public class Emp_Usuarios_Busq extends javax.swing.JFrame {
             model2.addColumn("Usuario");
             while(rs.next()){
             Object [] filas = new Object[8];
-            
+            //Recorrer todos los registros
                 for (int i = 0; i < 8; i++) {
                     filas[i] = rs.getObject(i + 1);
                     }
@@ -124,12 +142,15 @@ public class Emp_Usuarios_Busq extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de salir de la pestaña al menu anterior
     private void btnExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExActionPerformed
         dispose();
+        //Verifica los permisos del usuario
+
         if(Login.perm.equalsIgnoreCase("Jefe")){
           //new Ad_Confg().setVisible(true);
         }else{
+            //Retornar a pestaña anterior
           new Empleados().setVisible(true);
         } 
         

@@ -1,3 +1,15 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de modificar productos
+///Declaracion de librerias a usar
 
 package dulceria;
 import java.sql.*;
@@ -6,11 +18,15 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+//Declararcion de la clase 
 
 public class Empleados_Prod_Edi extends javax.swing.JFrame {
+//Declararcion de la variables 
+
 String user, product="";
 int ID;
-   
+   //Diseño de la pagina
+
     public Empleados_Prod_Edi() {
         initComponents();
         setSize(617,496);
@@ -178,26 +194,33 @@ int ID;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de salir de la pestaña al menu anterior
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
+        //Retornar a pestaña anterior
         new Empleados_Productos().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+//Boton de busqueda y comprobacion de producto existente
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
        product= txtDulce.getText();
+       //Validar campos vacios
+
        if(product.equals("")){
             JOptionPane.showMessageDialog(null, "Debe llenar el campo requerido");
             txtDulce.setBackground(Color.yellow);
         }else{ 
            txtDulce.setBackground(Color.white);
+           //Varificar el acceso a la base de datos
+
             try{
                  Connection cn = Conexion.conectar();
 
                  PreparedStatement pat = cn.prepareStatement(
+                         //Obtener datos
                     "select * from productos where nombre= '" + product + "'");
                  ResultSet rs = pat.executeQuery();
                     if(rs.next()){
+                        //Datos obtenidos
                      ID = rs.getInt("codigo_producto");
                      txtID.setText(rs.getString("codigo_producto"));
                      txtNom.setText(rs.getString("nombre"));
@@ -224,8 +247,9 @@ int ID;
             }   
    }
     }//GEN-LAST:event_btnSearchActionPerformed
-
+//Boton de modificar 
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
+//Declararcion de la variables 
 
         String Nombre = null, Marca = null, Descripcion = null;
         double Precio = 0;
@@ -234,20 +258,25 @@ int ID;
         Nombre = txtNom.getText();
         Marca= txtMarc.getText();
         Descripcion = txtDes.getText();
-        
+        //Validar campos vacios
+
         if(Nombre.equals("") || Marca.equals("") || Descripcion.equals("") || txtSto.getText().equals("") || txtPre.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Todos los campos deben esta llenos");
         }else{
             Cantidad = Integer.parseInt(txtSto.getText());
             Precio = Double.parseDouble(txtPre.getText());
+            //Varificar el acceso a la base de datos
+
            try{
                Connection cn = Conexion.conectar();
 
                PreparedStatement pat = cn.prepareStatement(
+                       //Obtener datos
                    "select nombre from productos where nombre = '" + product + "' and not codigo_producto = '"+ ID
                     + "'");
                     ResultSet rs = pat.executeQuery();
                     System.out.println(ID);
+                    //Validacion de la modificacion
                     if(rs.next()){
                         JOptionPane.showMessageDialog(null,"El nombre ya existe en la Base de datos");
                     }
@@ -336,7 +365,7 @@ int ID;
     private javax.swing.JTextField txtPre;
     private javax.swing.JTextField txtSto;
     // End of variables declaration//GEN-END:variables
-
+//Funcion de limpiar las cajas de texto
   public void Limpiar(){
         
         txtDulce.setText("");

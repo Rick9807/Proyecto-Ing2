@@ -1,3 +1,15 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de ventas
+///Declaracion de librerias a usar
 
 package dulceria;
 import java.sql.*;
@@ -26,9 +38,12 @@ import java.io.IOException;
 import javax.swing.SpinnerNumberModel;
 
 
+//Declararcion de la clase 
 
 public class Ventas1 extends javax.swing.JFrame {
- String user, nombre_usuario; 
+ //Declararcion de la variables 
+
+    String user, nombre_usuario; 
     int sesion_usuario;
     
    DefaultTableModel modelo = new DefaultTableModel();
@@ -46,6 +61,7 @@ public class Ventas1 extends javax.swing.JFrame {
     public Ventas1() {
         initComponents();
         txtCa.setValue(1);
+        //Nombre del usuario en uso
         user = Login.user;
         sesion_usuario = 1; 
         setResizable(false);
@@ -62,11 +78,13 @@ public class Ventas1 extends javax.swing.JFrame {
 //         txtw.setModel(n);
 
          txtUs.setText(user);
-         
+         //Varificar el acceso a la base de datos
+
          
          try{
              Connection cn = Conexion.conectar();
              PreparedStatement pat = cn.prepareStatement(
+                     //Obtener datos de usuario
                 "select id_usuario from usuarios where usuario= '" + user + "'");
              ResultSet rs =pat.executeQuery();
                 if(rs.next()){
@@ -76,11 +94,13 @@ public class Ventas1 extends javax.swing.JFrame {
                
          }
          
-         
+         //Varificar el acceso a la base de datos
+
          
          try{
              Connection cn = Conexion.conectar();
              PreparedStatement pat = cn.prepareStatement(
+                     //Obtener datos de venta
                 "select max(id_venta) as id_venta from ventas");
              ResultSet rs =pat.executeQuery();
                 if(rs.next()){
@@ -433,13 +453,17 @@ txt.setText(ss);
           new Empleado_Ad_Ventas().setVisible(true);
         } 
     }//GEN-LAST:event_jButton8ActionPerformed
-
+//Boton de realizar la venta
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    int va=0;  
+    //Declararcion de la variables 
+
+        int va=0;  
     String f="", c="", z="";
     f=txtCl1.getText().trim();
     c=txtPro1.getText().trim();
 //    z=txtCa.getToolTipText().trim();
+//Validar campos vacios
+
     if(txtCl1.getText().equals("")){
       va++;
       }
@@ -455,7 +479,7 @@ txt.setText(ss);
             va++;
         }
         if(va==0){
-        
+        //Llamar funciones
             guardarVenta();
             guardarDetalle();
             actualizarStock();
@@ -473,7 +497,7 @@ txt.setText(ss);
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+//Declaracion de funciones de los datos necesarios para la venta(prototipos)
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
        cliente();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -489,7 +513,7 @@ txt.setText(ss);
     private void ButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelActionPerformed
         Cancelar();
     }//GEN-LAST:event_ButtonCancelActionPerformed
-
+//cancelar y borrar datos
     void Cancelar(){
         txtCl1.setText(null);
         txtCl1.setEditable(true);
@@ -505,17 +529,21 @@ txt.setText(ss);
         txtTpagar.setText(null);
         tpagar=0;
     }
-    
+    //Funcion de guardar la venta
     void guardarVenta() {
+        //Declararcion de la variables 
+
         String dates = "";
         dates=txtDate.getText();
-   
+   //Varificar el acceso a la base de datos
+
     try{
         
              Connection cn = Conexion.conectar();        
              PreparedStatement pat2 = cn.prepareStatement(
+                     //Insertar en la base de datos
                         "insert into ventas values(?,?,?,?,?)");
-                      
+                      //Datos a insertar
                         pat2.setInt(1,0);
                         pat2.setInt(2,Cli2);
                         pat2.setInt(3,id_us);
@@ -537,17 +565,22 @@ txt.setText(ss);
         
 
     }
-
+//Funcion deguardar
     void guardarDetalle() {
+        //Declararcion de la variables 
+
         ventasid();
          String dates = "";
         dates=txtDate.getText();
+        //Varificar el acceso a la base de datos
+
     try{
         
              Connection cn = Conexion.conectar();        
              PreparedStatement pat2 = cn.prepareStatement(
+                     //Insertar en la venta de productos de la base de datos
                         "insert into venta_productos values(?,?,?,?)");
-                      
+                      //Datos
                         pat2.setInt(1,0);
                       //  pat2.setInt(2,0);
                         pat2.setInt(2,encontrados);
@@ -569,23 +602,30 @@ txt.setText(ss);
       
     }
     
-    
+    //Funcion de obtener fecha
       public void fecha() {
+          //Obtenida del sistema
         Calendar calendar = new GregorianCalendar();
         txtDate.setText("" + calendar.get(Calendar.YEAR) + "-" + calendar.get(Calendar.MONTH) + "-" + calendar.get(Calendar.DAY_OF_MONTH));
     }
-      
+      //Funcion de agregar producto
       public void AgregarPro(){
+          //Declararcion de la variables 
+
     double total;
         modelo = (DefaultTableModel) TablaDetalle.getModel();
         item = item + 1;
         int menor = Integer.parseInt(encontrado2.toString());
+        //Varificar el acceso a la base de datos
+
         try{
        Connection cn = Conexion.conectar();
         PreparedStatement pat = cn.prepareStatement(
+                //Obtener datos de registro
             "select codigo_producto from productos where nombre= '" + dulce+ "'");
              ResultSet rs = pat.executeQuery();
                       if(rs.next()){
+                          //verificar existencia
            encontrados = rs.getInt("codigo_producto");
                  System.out.println(encontrados);
                     }
@@ -597,9 +637,10 @@ txt.setText(ss);
         JOptionPane.showMessageDialog(null,"No hay suficientes productos en el Stock ");
         
         }else{
+            //Obtener costo total
         total = cantidad * precio;
         ArrayList lista = new ArrayList();
-        
+        //Verificar existencia
        if (stock > 0) {
           lista.add(item);
             lista.add(encontrados);
@@ -631,9 +672,10 @@ txt.setText(ss);
         }
     
       }
-    
+    //Funcion de cliente
       public void cliente(){
-      
+      //Declararcion de la variables 
+
       String Cliente="", C="", A=""; 
       int va=0;
     A= txtCl1.getText().trim();
@@ -641,6 +683,7 @@ txt.setText(ss);
     
       //Cli= Integer.parseInt(txtCl1.getText().trim());
       //n=Cli;
+//Validar campos vacios
 
       if(txtCl1.getText().equals("")){
       va++;
@@ -648,14 +691,18 @@ txt.setText(ss);
     
     if(va == 0){
         Cli = Integer.parseInt(A.toString());
+        //Varificar el acceso a la base de datos
+
       try{
        Connection cn = Conexion.conectar();
        
        
         PreparedStatement pat = cn.prepareStatement(
+                //Obtener datos
             "select id_cliente, nombre from clientes where id_cliente = '" + A+ "'");
              ResultSet rs = pat.executeQuery();
                       if(rs.next()){
+                          //Asignar
                 Cliente= rs.getString("nombre");
                  Cli2 = rs.getInt("id_cliente");
                  txtCl2.setText(Cliente);
@@ -679,22 +726,29 @@ txt.setText(ss);
         
   
       }
-      
+      //funcion de producto
       public void Producto(){
+          //Declararcion de la variables 
+
       String encontrado="";
       int val=0;
       dulce = txtPro1.getText().trim();
-      
+      //Validar campos vacios
+
       if(txtPro1.getText().equals("")){
       val++;
       }
-      
+      //Verificar existencia
       if(val==0){
+          //Varificar el acceso a la base de datos
+
        try{
        Connection cn = Conexion.conectar();
         PreparedStatement pat = cn.prepareStatement(
+                //Obtener datos
             "select nombre, precio, stock from productos where nombre= '" + dulce+ "'");
              ResultSet rs = pat.executeQuery();
+             //Asignar
                       if(rs.next()){
                  encontrado = rs.getString("nombre");
            encontrado1 = rs.getString("precio");
@@ -717,7 +771,7 @@ txt.setText(ss);
       }
       
       }
-    
+    //Funcion de suma total de la nota
      public void calculatTotal() {
         double e=0;
 //        for (int i = 0; i < TablaDetalle.getRowCount(); i++) {
@@ -726,6 +780,7 @@ txt.setText(ss);
 //            tpagar = tpagar + (cantidad * precio);
 //           
 //        }
+//Sumar los datos ya registrados hasta finalizar la nota
       tpagar = tpagar+(cantidad * precio);
      e=tpagar;
         txtTpagar.setText("" + e+ "0");
@@ -733,13 +788,14 @@ txt.setText(ss);
        // tpagars= String.valueOf(tpagar).toString();
              
     }
-        
+       //Limpiar la tabla vaciar datos 
      public void limpiarTabla(){
         for (int i = 0; i < modelo.getRowCount(); i++) {
             modelo.removeRow(i);
             i=i-1;
         }
     }
+     //Actualizar el almacen de los dulces
     public void actualizarStock() {
 //          String nombre = "", compania="";
 //               String marca = "", descripcion="";}
@@ -748,7 +804,8 @@ txt.setText(ss);
         for(int i=0; i<fila; i++){
             int codProd = (int) TablaDetalle.getValueAt(i,1); //Obtener valores de la fila i y columna 1 (en esto caso, el codigo del producto).
             int cantidad = (int) TablaDetalle.getValueAt(i,3); //Obtener valores de la fila i y columna 3 (en esto caso, la cantidad).
-            
+                 //Actualizar el almacen de los dulces
+                 //Varificar el acceso a la base de datos
             try{
                 Connection cn = Conexion.conectar(); //Conexión a BD
                 PreparedStatement pat = cn.prepareStatement( //Prepaparar query.
@@ -768,7 +825,7 @@ txt.setText(ss);
             }
         }
     }
-    
+    // funcion de generar nuevo
        void nuevo(){
         limpiarTabla();
         txtCl1.setText("");
@@ -782,18 +839,21 @@ txt.setText(ss);
         tpagar = 0;
     } 
        
-       
+       //Obtener el id
    public void ventasid(){
    String ven = "";
-   
+   //Varificar el acceso a la base de datos
+
    try{
        Connection cn = Conexion.conectar();
        
        
         PreparedStatement pat = cn.prepareStatement(
+                //Obtener datos de la base
             "SELECT MAX(id_venta) AS id_venta FROM ventas");
              ResultSet rs = pat.executeQuery();
                       if(rs.next()){
+                          //Asignar
                  V = rs.getInt("id_venta");
 //              V = Integer.parseInt(ven);
 //                 txt.setText(ven);

@@ -1,3 +1,15 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de registro de empleados
+///Declaracion de librerias a usar
 
 package dulceria;
 import Clases.Conexion;
@@ -7,14 +19,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
+//Declararcion de la clase 
 
 public class Usuarios extends javax.swing.JFrame {
+//Declararcion de la variables 
 
 String user;
    
     public Usuarios() {
         initComponents();
-        
+        //Diseño de la pagina
+
         setSize(586,503);
         setResizable(false);
         this.setLocationRelativeTo(null);//centrar las ventanas
@@ -192,9 +207,11 @@ String user;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de agregar empleados
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       int puesto_cmb = 0, sexo = 0 , validacion =0;
+      //Declararcion de la variables 
+
+        int puesto_cmb = 0, sexo = 0 , validacion =0;
         
         String edad ,nombre, apellidos, telefono,correo , contrasena, permisos_string ="", permisos="";
         
@@ -206,11 +223,14 @@ String user;
         puesto_cmb = cmbP.getSelectedIndex()+1;
         sexo = cmbsx.getSelectedIndex()+1;
         edad = txtedad.getText();
+//Validar campos vacios
 
         if(correo.equals("") || contrasena.equals("") || nombre.equals("") || apellidos.equals("") || telefono.equals("") || edad.equals("")){
             JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos");
             txtMail.setBackground(Color.white);
         }else{
+            //Verifica los permisos del usuario
+
             if(puesto_cmb == 1){
                 permisos_string ="Empleado";
             }else if(puesto_cmb == 2){
@@ -233,9 +253,10 @@ String user;
                     cn.close();
                  }else{
                     try{  
+                        //Insertar en la base de datos
                      PreparedStatement pat2 = cn.prepareStatement(
                        "insert into usuarios values(?,?,?,?,?,?,?,?,?)");
-
+                     //DAtos
                        pat2.setInt(1,0);
                        pat2.setString(2,nombre);
                        pat2.setString(3,apellidos);
@@ -262,18 +283,20 @@ String user;
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+//Boton de salir de la pestaña al menu anterior
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
                 dispose();
+                //Retornar a pestaña anterior
+
                 new Admin_Empleados().setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
-
+//Validar entrada de numeros
     private void txtedadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtedadKeyTyped
        char a = evt.getKeyChar();
        
        if(a < '0' || a > '9') evt.consume();
     }//GEN-LAST:event_txtedadKeyTyped
-
+//Validar entrada de numeros
     private void txtTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelKeyTyped
         char z = evt.getKeyChar();
         
@@ -327,7 +350,7 @@ String user;
     private javax.swing.JTextField txtedad;
     private javax.swing.JTextField txtnom;
     // End of variables declaration//GEN-END:variables
-
+//Funcion de limpiar las cajas de texto
     
     public void Limpiar(){
         txtMail.setText("");

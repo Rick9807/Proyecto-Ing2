@@ -1,21 +1,37 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de menu de productos
+///Declaracion de librerias a usar
 
 package dulceria;
 import java.sql.*;
 import Clases.Conexion;
 import javax.swing.ImageIcon;
 import javax.swing.WindowConstants;
+//Declararcion de la clase 
 
 public class Empleados_Productos extends javax.swing.JFrame {
+//Declararcion de la variables 
 
      String user;
   
     public Empleados_Productos() {
         initComponents();
-        
+        //Diseño de la pagina
+
         setSize(626,451);
         setResizable(false);
         this.setLocationRelativeTo(null);//centrar las ventanas
          user = Login.user;
+         //Nombre del usuario en uso
         setTitle("Productos - Sesion de "+ user);
          setIconImage (new ImageIcon(getClass().getResource("mentita.jpg")).getImage());
     
@@ -122,26 +138,34 @@ public class Empleados_Productos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de productos
     private void btnProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProducActionPerformed
        dispose();
+       //Redireccionar a agregar producto
+
        new Productos().setVisible(true);
     }//GEN-LAST:event_btnProducActionPerformed
-
+//Boton de modificar
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
        dispose();
+       //Redireccionar a modificar productos por parte de empleado
+
        new Empleados_Prod_Edi().setVisible(true);
        
         
     }//GEN-LAST:event_btnModActionPerformed
-
+//Boton de inventario
     private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvActionPerformed
       dispose();
+      //Redireccionar a pestala de mostrar los registros  de productos
+
       new Ad_Productos_Mostrar().setVisible(true);
     }//GEN-LAST:event_btnInvActionPerformed
-
+//Boton de salir de la pestaña al menu anterior
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
        dispose();
+       //Retornar a pestaña anterior
+
        new Empleados().setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
 

@@ -1,3 +1,15 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de registro de ventas
+///Declaracion de librerias a usar
 
 package dulceria;
 import java.sql.*;
@@ -10,37 +22,44 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+//Declararcion de la clase 
 
 public class Registro_Ventas extends javax.swing.JFrame {
- String user;
+ //Declararcion de la variables 
+
+    String user;
    public static String user_update = "";
   DefaultTableModel model = new DefaultTableModel();
     public Registro_Ventas() {
+        //Nombre del usuario en uso
         initComponents();
          user = Login.user;
+         //Diseño de la pagina
+
           setSize(626,555);
         setResizable(false);
         this.setLocationRelativeTo(null);//centrar las ventanas
          setIconImage (new ImageIcon(getClass().getResource("mentita.jpg")).getImage());
         setTitle("Empleados registrados - Sesión de "+ user);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
+        //Varificar el acceso a la base de datos
+
         try{
         
             Connection cn = Conexion.conectar();
              PreparedStatement pat = cn.prepareStatement(
               "select id_venta,id_cliente,id_usuario,fecha_venta, total from ventas");
             ResultSet rs= pat.executeQuery();
-            
+            //Mostrar en tabla
             Tabla = new JTable(model);
             jScrollPane1.setViewportView(Tabla);
-            
+            //Datos
             model.addColumn("Venta No°");
             model.addColumn("ID_Cliente");
             model.addColumn("ID_Vendedor");
             model.addColumn("Fecha");
             model.addColumn("Total");
-          
+          //Recorrer todos los registros llenos
             while(rs.next()){
             Object [] filas = new Object[5];
             
@@ -137,36 +156,48 @@ public class Registro_Ventas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de salir de la pestaña al menu anterior
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
      dispose();
+     //Verifica los permisos del usuario
+
      if(Login.perm.equalsIgnoreCase("Jefe")){
+         //Retornar a pestaña anterior
+
           new Ad_Ventas().setVisible(true);
         }else{
+         //Retornar a pestaña anterior
+
           new Empleado_Ad_Ventas().setVisible(true);
         }   
     }//GEN-LAST:event_btnSalirActionPerformed
-
+//Boton de filtrar por fechas
     private void btnBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusActionPerformed
-      String cons=""; 
+     //Declararcion de la variables 
+
+        String cons=""; 
       cons=txtDate.getText().trim();
-      
+      //Validar campos vacios
+
       if(txtDate.getText().equals("")){
         txtDate.setBackground(Color.yellow);
         JOptionPane.showMessageDialog(null, "Debes ingresar la fecha que desea buscar");
       }else{
           txtDate.setBackground(Color.white);
+          //Varificar el acceso a la base de datos
+
       try{
         limpiarTabla();
         Connection cn2 = Conexion.conectar();
            PreparedStatement pat2 = cn2.prepareStatement(
+                   //Datos del registro
            "select id_venta,id_cliente,id_usuario,fecha_venta, total from ventas"
                    + " where fecha_venta = '"+ cons +"'");
       
            ResultSet rs= pat2.executeQuery();
             
             jScrollPane1.setViewportView(Tabla);
-         
+         //Recorrer todos los registros
             while(rs.next()){
             Object [] filas = new Object[5];
             
@@ -182,7 +213,7 @@ public class Registro_Ventas extends javax.swing.JFrame {
         }
       }
     }//GEN-LAST:event_btnBusActionPerformed
-
+//Limpiar tabla de datos
      public void limpiarTabla(){
         for (int i = 0; i < model.getRowCount(); i++) {
             model.removeRow(i);

@@ -1,8 +1,22 @@
 /*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de agregar productos
+///Declaracion de librerias a usar
+
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package dulceria;
 import java.sql.*;
 import Clases.Conexion;
@@ -14,8 +28,10 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+//Declararcion de la clase 
 
 public class Productos extends javax.swing.JFrame {
+//Declararcion de la variables 
 
     private NewConexion con = new  NewConexion();
     String user1="", nombre_usuarios, compania;
@@ -27,6 +43,8 @@ public class Productos extends javax.swing.JFrame {
     
     public Productos() {
         initComponents();
+        //Diseño de la pagina
+
         setSize(618,517);
         setResizable(false);
         this.setLocationRelativeTo(null);//centrar las ventanas
@@ -34,7 +52,8 @@ public class Productos extends javax.swing.JFrame {
         user1 = Login.user;
         setTitle("Registrar Productos - Sesion de "+ user1);
         String mis= p.Compania;
-      
+      //Varificar el acceso a la base de datos
+
         try{
              Connection cn = Conexion.conectar();
              PreparedStatement pat = cn.prepareStatement(
@@ -226,18 +245,26 @@ public class Productos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de salir de la pestaña al menu anterior
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
       dispose();
+      //Retornar a pestaña anterior
+
       if(Login.perm.equalsIgnoreCase("Jefe")){
+          //Retornar a pestaña anterior
+
           new Admim_Productos().setVisible(true);
         }else{
+          //Retornar a pestaña anterior
+
           new Empleados_Productos().setVisible(true);
         }   
     }//GEN-LAST:event_btnExitActionPerformed
-
+//Boton de agregar productos a la base de datos
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-     String nombre="", marca="", descripcion="", prueba="", comp="";
+     //Declararcion de la variables 
+
+    String nombre="", marca="", descripcion="", prueba="", comp="";
      double precio=0;
      int Stock=0;
      String prove="";
@@ -245,13 +272,16 @@ public class Productos extends javax.swing.JFrame {
      nombre = txtNom.getText();
      marca= txtMarc.getText();
      descripcion = txtDes.getText();
-     
+     //Validar campos vacios
+
      if(nombre.equals("") || marca.equals("") || descripcion.equals("") || txtSto.getText().equals("") || txtPre.getText().equals("")){
         JOptionPane.showMessageDialog(null,"Todos los campos deben esta llenos");
      }else{
          txtCompania.setText(prove);
          Stock = Integer.parseInt(txtSto.getText());
          precio = Double.parseDouble(txtPre.getText());
+         //Varificar el acceso a la base de datos
+
          try {
             Connection cn = Conexion.conectar();
             PreparedStatement pat = cn.prepareStatement(
@@ -263,8 +293,9 @@ public class Productos extends javax.swing.JFrame {
                     try{
                         Connection cn2 = Conexion.conectar();
                         PreparedStatement pat2 = cn2.prepareStatement(
+                                //Insertar en la base de datos
                                 "insert into productos values(?,?,?,?,?,?,?,?)");
-
+                        //Datos a insertar
                         pat2.setInt(1,0);
                         pat2.setString(2,nombre);
                         pat2.setString(3,marca);
@@ -293,7 +324,7 @@ public class Productos extends javax.swing.JFrame {
       }
   
     }//GEN-LAST:event_btnAgregarActionPerformed
-    
+    //Validar entrada de numeros
     private void txtStoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStoKeyTyped
        char c = evt.getKeyChar();
        if(c < '0'|| c > '9') evt.consume();
@@ -304,19 +335,24 @@ public class Productos extends javax.swing.JFrame {
 //       char c = evt.getKeyChar();
 //       if(c < '0'|| c > '9') evt.consume();
     }//GEN-LAST:event_txtPreKeyTyped
-
+//Boton de buscar y comprobar productos
     private void btnBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBsActionPerformed
 
-       proveedor = txtBus.getText();        
+       proveedor = txtBus.getText();  
+       //Validar campos vacios
+
         if(proveedor.equals("")){
             JOptionPane.showMessageDialog(null, "Debe llenar el campo requerido");
             txtBus.setBackground(Color.yellow);
         }else{
             txtBus.setBackground(Color.white);
             try{
+                //Varificar el acceso a la base de datos
+
                  Connection cn = Conexion.conectar();
 
                  PreparedStatement pat = cn.prepareStatement(
+                         //Obtener datos
                     "select compania from proovedores where compania= '" + proveedor + "'");
                  ResultSet rs =pat.executeQuery();
                     if(rs.next()){
@@ -397,7 +433,8 @@ public class Productos extends javax.swing.JFrame {
     private javax.swing.JTextField txtPre;
     private javax.swing.JTextField txtSto;
     // End of variables declaration//GEN-END:variables
- public void Limpiar(){
+ //Funcion de limpiar las cajas de texto
+    public void Limpiar(){
     
         txtBus.setText("");
         txtCompania.setText("");

@@ -1,3 +1,15 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de empleados registrados
+///Declaracion de librerias a usar
 
 package dulceria;
 import java.sql.*;
@@ -10,7 +22,10 @@ import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+//Declararcion de la clase 
+
 public class Usuarios_Busqueda extends javax.swing.JFrame {
+//Declararcion de la variables 
 
     String user;
    public static String user_update = "";
@@ -18,6 +33,8 @@ public class Usuarios_Busqueda extends javax.swing.JFrame {
    DefaultTableModel model = new DefaultTableModel();
     public Usuarios_Busqueda() {
         initComponents();
+        //Diseño de la pagina
+
          user = Login.user;
           setSize(800,482);
         setResizable(false);
@@ -27,17 +44,19 @@ public class Usuarios_Busqueda extends javax.swing.JFrame {
         setTitle("Empleados registrados - Sesión de "+ user);
         
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
+        //Varificar el acceso a la base de datos
+
         try{
         
             Connection cn = Conexion.conectar();
              PreparedStatement pat = cn.prepareStatement(
+                     //Obtener datos
               "select id_usuario, nombre, apellidos, edad, sexo, telefono, puesto, usuario from usuarios");
             ResultSet rs= pat.executeQuery();
-            
+            //Estructura a mostrar
             table_muestra = new JTable(model);
             jScrollPane1.setViewportView(table_muestra);
-            
+            //DAtos
             model.addColumn("Id_Usuarios");
             model.addColumn("Nombre");
             model.addColumn("Apellidos");
@@ -48,7 +67,7 @@ public class Usuarios_Busqueda extends javax.swing.JFrame {
             model.addColumn("Usuario");
             while(rs.next()){
             Object [] filas = new Object[8];
-            
+            //Recorrer todos los registros
                 for (int i = 0; i < 8; i++) {
                     filas[i] = rs.getObject(i + 1);
                     }
@@ -146,13 +165,16 @@ public class Usuarios_Busqueda extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de salir de la pestaña al menu anterior
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
                 dispose();
+                //Retornar a pestaña anterior
+
                 new Admin_Empleados().setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
-
+//boton de consultas/filtros
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+//Declararcion de la variables 
 
        String cons="";
       cons=txtBuscar.getText().trim();
@@ -162,17 +184,20 @@ public class Usuarios_Busqueda extends javax.swing.JFrame {
        JOptionPane.showMessageDialog(null, "Debes ingresar el puesto que desea buscar");
       }else{
           txtBuscar.setBackground(Color.white);
+          //Varificar el acceso a la base de datos
+
       try{
         limpiarTabla();
         Connection cn2 = Conexion.conectar();
            PreparedStatement pat2 = cn2.prepareStatement(
+                   //Obtener datos
            "select id_usuario, nombre, apellidos, edad, sexo, telefono, puesto, usuario from usuarios"
                    + " where puesto = '"+ cons +"'");
       
            ResultSet rs= pat2.executeQuery();
         
             jScrollPane1.setViewportView(table_muestra);
-        
+        //Recorrer todos los registros
             while(rs.next()){
             Object [] filas = new Object[8];
             
@@ -190,7 +215,8 @@ public class Usuarios_Busqueda extends javax.swing.JFrame {
       
       }   
     }//GEN-LAST:event_btnConsultarActionPerformed
-public void limpiarTabla(){
+//Permite limpiar la tabla
+    public void limpiarTabla(){
         for (int i = 0; i < model.getRowCount(); i++) {
             model.removeRow(i);
             i=i-1;
