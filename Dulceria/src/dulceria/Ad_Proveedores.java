@@ -1,3 +1,17 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña deañadir un provedor 
+
+
+///Declaracion de librerias a usar
 
 package dulceria;
 import java.sql.*;
@@ -6,14 +20,17 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+//Declararcion de la clase 
 
 public class Ad_Proveedores extends javax.swing.JFrame {
-    
+    //Declararcion de la variables 
+
     String user1, nombre_usuarios, Compania;
     int id;
     public static int sesion_usuario;
     
-  
+  //Diseño de la pagina
+
     public Ad_Proveedores() {
         initComponents();
         user1 = Login.user;
@@ -26,7 +43,8 @@ public class Ad_Proveedores extends javax.swing.JFrame {
          setIconImage (new ImageIcon(getClass().getResource("mentita.jpg")).getImage());
     
          setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-         
+         //Varificar el acceso a la base de datos
+
          try{
              Connection cn = Conexion.conectar();
              PreparedStatement pat = cn.prepareStatement(
@@ -135,23 +153,30 @@ public class Ad_Proveedores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de salir de la pestaña al menu anterior
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         dispose();
+        //Retornar
         new Admin_Proveedores().setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
+//Boton de añadir un provedor
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        //Declararcion de la variables 
+
         String  Nombre, Correo, Telefono;
         Nombre= txtNom.getText().trim();
         Correo = txtCorreo.getText().trim();
         Telefono = txtTel.getText().trim();
         Compania = txtComp.getText().trim();
 
+        //Validar campos vacios
 
         if(Nombre.equals("") || Correo.equals("") || Telefono.equals("") || Compania.equals("")){
             JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos");
         }else{
+            //Varificar el acceso a la base de datos
+
         try {
             Connection cn = Conexion.conectar();
             PreparedStatement pat = cn.prepareStatement(
@@ -164,6 +189,7 @@ public class Ad_Proveedores extends javax.swing.JFrame {
                  cn.close();
                  }else{
                      try{
+                         //Insertar valores
                           PreparedStatement pat2 = cn.prepareStatement(
                             "insert into proovedores values(?,?,?,?,?,?)");
 
@@ -243,7 +269,7 @@ public class Ad_Proveedores extends javax.swing.JFrame {
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
-
+//Funcion para limpiar las cajas de texto
   public void Limpiar(){
     
                     

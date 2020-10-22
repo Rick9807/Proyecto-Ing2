@@ -1,5 +1,17 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
 
+//Pestaña de añadir clientes
 
+///Declaracion de librerias a usar
 package dulceria;
 import java.sql.*;
 import Clases.Conexion;
@@ -14,8 +26,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 
 
-        
+    //Declararcion de la clase   
 public class Ad_Clientes extends javax.swing.JFrame {
+//Declararcion de la variables 
 
 String user;
 String ven = null;
@@ -24,6 +37,8 @@ String nombre="", vent="";
 public static String user_update = "";
    
    DefaultTableModel model = new DefaultTableModel();
+
+   //Diseño de la pagina
 
     public Ad_Clientes() {
         initComponents();
@@ -34,7 +49,8 @@ public static String user_update = "";
         user = Login.user;
         setTitle("Clientes - Sesion de "+ user);
         
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);   
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); 
+        //Validar el acceso a la base de datos
    try{
        Connection cn = Conexion.conectar();
        
@@ -245,18 +261,20 @@ public static String user_update = "";
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de añadir un registro de cliente
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         String nom ="", ape="", tel="";
+        //Declararcion de la variables 
 
         nom = txtNom.getText().trim();
         ape= txtApe.getText().trim();
         tel = txtTel.getText().trim();
-        
+        //Validar campos vacios
         if(nom.equals("") || ape.equals("") || tel.equals("")){
           //txtNom.setBackground(Color.WHITE);
             JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos");
         }else{
+            //Validar el acceso a la base de datos y que los datos no se repitan
           try{
             Connection cn = Conexion.conectar();
             PreparedStatement pat = cn.prepareStatement(
@@ -268,6 +286,7 @@ public static String user_update = "";
                txtNom.setBackground(Color.WHITE);
               cn.close();
               }else{
+                  //Insertar en la base de datos
                 try{
                     PreparedStatement pat2 = cn.prepareStatement(
                       "insert into clientes values(?,?,?,?)");
@@ -306,26 +325,31 @@ public static String user_update = "";
     
             
     }//GEN-LAST:event_btnAddActionPerformed
-
+//Boton de salir
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
+        //Verifica lso permisos del usuario
         if(Login.perm.equalsIgnoreCase("Jefe")){
           new Ad_Ventas().setVisible(true);
         }else{
           new Empleado_Ad_Ventas().setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+    //Boton de modificar la informacion de un cliente
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
         String Nombre, Apellidos, Telefono;
 
         Nombre= txtNom.getText().trim();
         Apellidos = txtApe.getText().trim();
         Telefono = txtTel.getText().trim();
+//Validar campos vacios
 
         if(Nombre.equals("") || Apellidos.equals("") || Telefono.equals("")){
            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
         }else{
+            //Validar el acceso a la base de datos
+
             try{
                 Connection cn = Conexion.conectar();
 
@@ -367,21 +391,25 @@ public static String user_update = "";
             }
        */
     }//GEN-LAST:event_btnModActionPerformed
-
+//Boton de busqueda y comprobacion de registros de clientes
     private void btnBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusActionPerformed
+        //Declararcion de la variables 
+
         nombre = txtbs.getText();
-        
+        //Validar campos vacios
         if(nombre.equals("")){
             JOptionPane.showMessageDialog(null, "Debe llenar el campo requerido");
             txtbs.setBackground(Color.yellow);
         }else{
             txtbs.setBackground(Color.white);
+            //Validar el acceso a la base de datos
+
            try{
             Connection cn = Conexion.conectar();
             PreparedStatement pat = cn.prepareStatement(
             "select * from clientes where nombre = '" + nombre + "'");
              ResultSet rs = pat.executeQuery();
-
+             //Verificar si existe
              if(rs.next()){
              ID = rs.getInt("id_cliente");
             //vent= String.valueOf(ID).toString();
@@ -399,30 +427,35 @@ public static String user_update = "";
              else{
              JOptionPane.showMessageDialog(null,"No existe el Cliente "+ nombre +" en la Base de datos" );
              Limpiar();
-             }
+             }//Imprimir info
             }catch(SQLException e){
                 System.err.println("Error al cargar la información del Cliente" + e);
                 JOptionPane.showMessageDialog(null," ERROR al cargar información del Cliente, contacte al administrador ");
                 }
         }
     }//GEN-LAST:event_btnBusActionPerformed
-
+//Boton de eliminar un registro de clientes
     private void btnAdd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd2ActionPerformed
         String Nombre, Apellidos, Telefono;
+        //Declararcion de la variables 
 
         Nombre= txtNom.getText().trim();
         Apellidos = txtApe.getText().trim();
         Telefono = txtTel.getText().trim();
-       
+       //Validar campos vacios
+
         if(Nombre.equals("") || Apellidos.equals("") || Telefono.equals("")){
                JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
         }else{
+            //Validar el acceso a la base de datos
+
            try{
                 Connection cn = Conexion.conectar();
 
                 PreparedStatement pat = cn.prepareStatement(
                     "delete from clientes where nombre = '" + nombre+ "'");  
                 //ResultSet rs = pat.executeQuery();
+                //Corfirmacion de la eliminacion
                 if(JOptionPane.showConfirmDialog(this, "¿Esta seguro de borrar este cliente?") == 0){
                     pat.executeUpdate();
                     JOptionPane.showMessageDialog(null," Se ha eliminado exitosamente ");
@@ -443,7 +476,7 @@ public static String user_update = "";
         JOptionPane.showMessageDialog(null, "El campo Télefono esta vacio");
             }*/
     }//GEN-LAST:event_btnAdd2ActionPerformed
-
+//Ver los registros de los clientes 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
       dispose();
       new Ad_Clientes_Show().setVisible(true);
@@ -513,6 +546,7 @@ public static String user_update = "";
     private javax.swing.JTextField txtbs;
     // End of variables declaration//GEN-END:variables
 
+    //Funcion de limpiar las cajas de texto
    public void Limpiar(){
         //txtID.setText("");
         txtbs.setText("");

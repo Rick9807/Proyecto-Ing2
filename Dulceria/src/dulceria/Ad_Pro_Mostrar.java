@@ -1,3 +1,16 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de mostrar la info de los productos 
+
+///Declaracion de librerias a usar
 
 package dulceria;
 import java.sql.*;
@@ -10,12 +23,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
+//Declararcion de la clase 
 
 public class Ad_Pro_Mostrar extends javax.swing.JFrame {
+//Declararcion de la variables 
 
      String user;
    public static String user_update = "";
    DefaultTableModel model2 = new DefaultTableModel();
+   //Diseño de la pagina
+
     public Ad_Pro_Mostrar() {
         initComponents();
          user = Login.user;
@@ -27,17 +44,19 @@ public class Ad_Pro_Mostrar extends javax.swing.JFrame {
         setTitle("Proveedores - Sesión de "+ user);
         
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
+        //Varificar el acceso a la base de datos
+
         try{
         
             Connection cn = Conexion.conectar();
              PreparedStatement pat = cn.prepareStatement(
+                     //Especifica los campos a considerar
               "select id_proveedor, nombre, correo, telefono, compania, id_usuario from proovedores");
             ResultSet rs = pat.executeQuery();
-            
+            //Define donde se mostraran
             table_Pro = new JTable(model2);
             jScrollPane1.setViewportView(table_Pro);
-            
+            //Asignar variables
             model2.addColumn("Id_Proveedor");
             model2.addColumn("Nombre");
              model2.addColumn("Correo");
@@ -46,7 +65,7 @@ public class Ad_Pro_Mostrar extends javax.swing.JFrame {
             model2.addColumn("Id_Usuarios");
             while(rs.next()){
             Object [] filas = new Object[6];
-            
+            //Recorre cada registro para poner en las filas y columnas
                 for (int i = 0; i < 6; i++) {
                     filas[i] = rs.getObject(i + 1);
                     }
@@ -120,13 +139,17 @@ public class Ad_Pro_Mostrar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de salir de la pestaña al menu anterio
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         dispose();
+        //Verifica lso permisos del usuario
+
         if(Login.perm.equalsIgnoreCase("Jefe")){
+            //Retornar a la pestaña anterior
           new Admin_Proveedores().setVisible(true);
         }else{
+            //retorna a empleados
           new Empleados().setVisible(true);
         }
         

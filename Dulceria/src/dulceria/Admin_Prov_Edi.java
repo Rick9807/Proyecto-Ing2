@@ -1,3 +1,15 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de modificar provedores
+///Declaracion de librerias a usar
 
 package dulceria;
 import java.sql.*;
@@ -6,15 +18,19 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+//Declararcion de la clase 
 
 public class Admin_Prov_Edi extends javax.swing.JFrame {
+//Declararcion de la variables 
+
 String user;
 int es, ID;
 public static int Sesion_usuario, Id;
    
     public Admin_Prov_Edi() {
         initComponents();
-        
+        //Diseño de la pagina
+
         setSize(622,448);
         setResizable(false);
         this.setLocationRelativeTo(null);//centrar las ventanas
@@ -176,18 +192,24 @@ public static int Sesion_usuario, Id;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+//Boton de modificar la info de provedor
 
     private void btnModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModActionPerformed
+      //Declararcion de la variables 
+
         String Nombre, Correo, Compania, Telefono;
 
         Nombre = txtNom.getText().trim();
         Correo = txtCorreo.getText().trim();
         Telefono = txtTel.getText().trim();
         Compania = txtComp.getText().trim();
+//Validar campos vacios
 
         if(Nombre.equals("") || Correo.equals("") || Telefono.equals("") || Compania.equals("")){
             JOptionPane.showMessageDialog(null, "Todos los campos deben esta llenos");
         }else{
+            //Varificar el acceso a la base de datos
+
             try{
                 Connection cn = Conexion.conectar();
 
@@ -200,6 +222,7 @@ public static int Sesion_usuario, Id;
                         JOptionPane.showMessageDialog(null,"La compañia ya existe en la Base de datos");
                      }else{
                         Connection cn2 = Conexion.conectar();
+                        //Actualizar base de datos
                         PreparedStatement pat2 = cn2.prepareStatement("update proovedores set nombre=?,"
                                    + "telefono=?, correo=?, compania=? where id_proveedor = '"+ ID + "'");
 
@@ -221,15 +244,20 @@ public static int Sesion_usuario, Id;
             }
         }
     }//GEN-LAST:event_btnModActionPerformed
-
+//Boton de eliminar provedor
     private void btnMod1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMod1ActionPerformed
+       //Declararcion de la variables 
+
         String Compania;
         Compania = txtCop.getText().trim();
+        //Varificar el acceso a la base de datos
+
         try{
             Connection cn = Conexion.conectar();
 
             PreparedStatement pat = cn.prepareStatement(
-                "delete from proovedores where compania = '" + Compania+ "'");  
+                "delete from proovedores where compania = '" + Compania+ "'"); 
+            //Comprobar y validar la eliminacion
             if(JOptionPane.showConfirmDialog(this, "¿Esta seguro de borrar a este empleado?") == 0) {
                 pat.executeUpdate();
                 JOptionPane.showMessageDialog(null," Se ha eliminado exitosamente ");
@@ -241,30 +269,36 @@ public static int Sesion_usuario, Id;
             JOptionPane.showMessageDialog(null," No se permite la eliminación del proveedor por restriccion de la BD "); 
         }
     }//GEN-LAST:event_btnMod1ActionPerformed
-
+//Boton de salir de la pestaña al menu anterior
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
        dispose();
+       //Retornar
        new Admin_Proveedores().setVisible(true);
         
     }//GEN-LAST:event_btnExitActionPerformed
-
+//Boton de comprobacion y buesqueda de registro
     private void btnBsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBsActionPerformed
-       String compania="",nombre="";
+       //Declararcion de la variables 
+
+        String compania="",nombre="";
         
         compania = txtCop.getText();
-        
+        //Verifica los permisos del usuario
+
         if(compania.equals("")){
             JOptionPane.showMessageDialog(null, "Debe llenar el campo requerido");
             txtCop.setBackground(Color.yellow);
         }else{
             txtCop.setBackground(Color.white);
+            //Varificar el acceso a la base de datos
+
            try{
             Connection cn = Conexion.conectar();
 
             PreparedStatement pat = cn.prepareStatement(
                 "select * from proovedores where compania = '" + compania + "'");
                  ResultSet rs = pat.executeQuery();
-
+                 //Obtener info
                  if(rs.next()){
                     ID = rs.getInt("id_proveedor");
                     txtNom.setText(rs.getString("nombre"));
@@ -347,7 +381,8 @@ public static int Sesion_usuario, Id;
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
- public void Limpiar(){ 
+//Funcion de limpiar las cajas de texto
+    public void Limpiar(){ 
         txtCop.setText("");
         txtNom.setText("");
         txtCorreo.setText("");

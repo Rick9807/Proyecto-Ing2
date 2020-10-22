@@ -1,3 +1,15 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de menu de ventas
+///Declaracion de librerias a usar
 
 package dulceria;
 import java.sql.*;
@@ -5,12 +17,15 @@ import Clases.Conexion;
 import static dulceria.Administrador.sesion_usuario;
 import javax.swing.ImageIcon;
 import javax.swing.WindowConstants;
+//Declararcion de la clase 
 
 public class Ad_Ventas extends javax.swing.JFrame {
+//Declararcion de la variables 
 
     String user, nombre_usuario; 
     int sesion_usuario;
-    
+    //Diseño de la pagina
+
     public Ad_Ventas() {
         initComponents();
         user = Login.user;
@@ -23,12 +38,15 @@ public class Ad_Ventas extends javax.swing.JFrame {
          setIconImage (new ImageIcon(getClass().getResource("mentita.jpg")).getImage());
     
          setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-         
+         //Varificar el acceso a la base de datos
+
          try{
              Connection cn = Conexion.conectar();
              PreparedStatement pat = cn.prepareStatement(
                 "select nombre from usuarios where usuario= '" + user + "'");
              ResultSet rs =pat.executeQuery();
+             //Verifica lso permisos del usuario
+
                 if(rs.next()){
                     nombre_usuario = rs.getString("nombre");
                     jLabel2.setText("Jefe " + nombre_usuario);
@@ -143,24 +161,31 @@ public class Ad_Ventas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+//Boton de redirrecionar a anañir clientes
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
        dispose();
+       //Redireccionar
        new Ad_Clientes().setVisible(true);
     }//GEN-LAST:event_btnClientesActionPerformed
+//Boton de generar una venta
 
     private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
         dispose();
+        //Redireccionar a la pestaña para generar ventas
         new Ventas1().setVisible(true);
     }//GEN-LAST:event_btnVentasActionPerformed
+//Boton de historial de ventas
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         dispose();
+        //Redireccionar a los registros de ventas
         new Registro_Ventas().setVisible(true);
     }//GEN-LAST:event_btnMostrarActionPerformed
-
+//Boton de salir de la pestaña al menu anterior
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         dispose();
+        //Retornar a administrador
         new Administrador().setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
 

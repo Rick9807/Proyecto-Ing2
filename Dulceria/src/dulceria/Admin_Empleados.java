@@ -1,16 +1,32 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de menu de empleados
+///Declaracion de librerias a usar
 
 package dulceria;
 import java.sql.*;
 import Clases.Conexion;
 import javax.swing.ImageIcon;
 import javax.swing.WindowConstants;
+//Declararcion de la clase 
 
 public class Admin_Empleados extends javax.swing.JFrame {
+//Declararcion de la variables 
 
     String user, nombre_usuario;
     public static int sesion_usuario;
     
     public Admin_Empleados() {
+        //Diseño de la pagina
+
         initComponents();
           setSize(625,450);
         setResizable(false);
@@ -120,24 +136,28 @@ public class Admin_Empleados extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de mostrar la informacion y registros de empleados
     private void btnMosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMosActionPerformed
         dispose();
+        //Redireccionar  a usuarios de busqueda
         new Usuarios_Busqueda().setVisible(true);
     }//GEN-LAST:event_btnMosActionPerformed
-
+//Boton de añadir un empleado
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         dispose();
+        //Redireccionar  a usuario
         new Usuarios().setVisible(true);
     }//GEN-LAST:event_btnAddActionPerformed
-
+//Boton de salir de la pestaña al menu anterio
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
        dispose();
+       //Retornar a la pestaña anterior
         new Administrador().setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
-
+//Boton de modificar el empleado
     private void btnAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
         dispose();
+        //Redireccionar 
         new Admin_Editar().setVisible(true);
     }//GEN-LAST:event_btnAdd1ActionPerformed
 

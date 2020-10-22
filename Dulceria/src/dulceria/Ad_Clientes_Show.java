@@ -1,3 +1,17 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+
+//Pestaña de mostrar la informacion de los clientes
+
+///Declaracion de librerias a usar
 
 package dulceria;
 import java.sql.*;
@@ -10,11 +24,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+//Declararcion de la clase 
+
 public class Ad_Clientes_Show extends javax.swing.JFrame {
+//Declararcion de la variables 
 
        String user;
    public static String user_update = "";
    DefaultTableModel model = new DefaultTableModel();
+   //Diseño de la pagina
+
     public Ad_Clientes_Show() {
         initComponents();
         user = Login.user;
@@ -26,7 +45,8 @@ public class Ad_Clientes_Show extends javax.swing.JFrame {
         setTitle("Clientes registrados - Sesión de "+ user);
         
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
+        //Varificar el acceso a la base de datos
+
         try{
         
             Connection cn = Conexion.conectar();
@@ -36,11 +56,12 @@ public class Ad_Clientes_Show extends javax.swing.JFrame {
             
             table_muestra = new JTable(model);
             jScrollPane1.setViewportView(table_muestra);
-            
+            //Obtener los valores de la base de datos
             model.addColumn("Id_Clientes");
             model.addColumn("Nombre");
             model.addColumn("Apellidos");
             model.addColumn("Teléfono");
+            //Recorrer cada registro de la base 
             
             while(rs.next()){
             Object [] filas = new Object[4];
@@ -117,9 +138,11 @@ public class Ad_Clientes_Show extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+//Boton de salir de la pestaña al menu anterior
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       dispose();
+      //Retornar
         new Ad_Clientes().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

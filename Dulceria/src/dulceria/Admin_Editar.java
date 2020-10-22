@@ -1,3 +1,15 @@
+/*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de modificar la informacion de los empleados
+///Declaracion de librerias a usar
 
 package dulceria;
 import java.sql.*;
@@ -6,14 +18,18 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+//Declararcion de la clase 
 
 public class Admin_Editar extends javax.swing.JFrame {
+
+    //Declararcion de la variables 
 String user;
 int ID;
    
     public Admin_Editar() {
         initComponents();
-             
+        //Diseño de la pagina
+     
         setSize(586,511);
         setResizable(false);
         this.setLocationRelativeTo(null);//centrar las ventanas
@@ -108,6 +124,11 @@ int ID;
         getContentPane().add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 230, 30));
 
         jcbP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleado", "Jefe" }));
+        jcbP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbPActionPerformed(evt);
+            }
+        });
         getContentPane().add(jcbP, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 230, 30));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -146,6 +167,11 @@ int ID;
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
         jcbSex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F", "M" }));
+        jcbSex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbSexActionPerformed(evt);
+            }
+        });
         getContentPane().add(jcbSex, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, 60, 30));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -231,16 +257,21 @@ int ID;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Boton de salir de la pestaña al menu anterior
     private void btnExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExActionPerformed
        dispose();
+      // Retornar
         new Admin_Empleados().setVisible(true);  
     }//GEN-LAST:event_btnExActionPerformed
 
+//Boton de editar la informacion de un registro
+
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-       int puesto_cmb, sexo;
+      //Declararcion de la variables 
+
+        int puesto_cmb, sexo;
        String edad ,nombre, apellidos, telefono,correo , contrasena, permisos_string ="", permisos="";
-       
+       //Informacion del registro
         correo = txtCorreo.getText().trim();
         contrasena = txtPass.getText().trim();
         nombre = txtNom.getText().trim();
@@ -249,20 +280,25 @@ int ID;
         puesto_cmb = jcbP.getSelectedIndex()+1;
         sexo = jcbSex.getSelectedIndex()+1;
         edad = txtEdad.getText();      
-        
+        //Validar campos vacios
+
         if(correo.equals("") || contrasena.equals("") || nombre.equals("") || apellidos.equals("") || telefono.equals("") || edad.equals("")){
             JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos");
         }else{
+            //Verifica lso permisos del usuario
+
             if(puesto_cmb == 1){
             permisos_string ="Empleado";
             }else if(puesto_cmb == 2){
             permisos_string ="Jefe";
             }
+            //Verificar sexo
             if(sexo == 1){
             permisos ="F";
             }else if(sexo == 2){
             permisos ="M";
             }
+//Varificar el acceso a la base de datos
 
             try{
             Connection cn = Conexion.conectar();
@@ -271,15 +307,16 @@ int ID;
                 "select usuario from usuarios where usuario = '" + correo + "' and not id_usuario = '"+ ID
                  + "'");
                  ResultSet rs = pat.executeQuery();
-
+//Verificar si existe
                  if(rs.next()){
                  JOptionPane.showMessageDialog(null,"El nombre de usuario no esta disponible");
                  }else{
                     Connection cn2 = Conexion.conectar();
                     PreparedStatement pat2 = cn2.prepareStatement(
+                            ///Actualizar los datos de la base 
                     "update usuarios set nombre=?, apellidos=?, edad=?, sexo=?, telefono=?, puesto=?, usuario=?, password=?"
                             + " where id_usuario = '"+ ID +"'");
-
+//Datos obtenidos
                      pat2.setString(1,nombre);
                      pat2.setString(2,apellidos );
                      pat2.setString(3,edad );
@@ -304,14 +341,20 @@ int ID;
         
         
     }//GEN-LAST:event_btnEditActionPerformed
-
+//Boton de eliminar un registro
     private void btnDelateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelateActionPerformed
+        //Declararcion de la variables 
+
         String usuario = "";
         usuario = txtNom1.getText();
+        //Varificar el acceso a la base de datos
+
         try{
             Connection cn = Conexion.conectar();
+            //Comando para eliminar el registro
             PreparedStatement pat = cn.prepareStatement(
-                "delete from usuarios where nombre = '" + usuario+ "'");  
+                "delete from usuarios where nombre = '" + usuario+ "'");
+            //verificar y confirmar
             if(JOptionPane.showConfirmDialog(this, "¿Esta seguro de borrar a este empleado?") == 0) {
                 pat.executeUpdate();
                 JOptionPane.showMessageDialog(null," Se ha eliminado exitosamente ");
@@ -325,22 +368,27 @@ int ID;
         } 
         
     }//GEN-LAST:event_btnDelateActionPerformed
-
+//Boton de cuscar y comprobar si ya existe el registro
     private void btnBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusActionPerformed
+        //Declararcion de la variables 
+
         String nombre="";
         nombre = txtNom1.getText();
-        
+        //Validar campos vacios
+
         if(nombre.equals("")){
             JOptionPane.showMessageDialog(null, "Debe llenar el campo requerido");
             txtNom1.setBackground(Color.yellow);
         }else{
             txtNom1.setBackground(Color.white);
+            //Varificar el acceso a la base de datos
+
            try{
                 Connection cn = Conexion.conectar();
                 PreparedStatement pat = cn.prepareStatement(
                 "select * from usuarios where nombre = '" + nombre + "'");
                  ResultSet rs = pat.executeQuery();
-
+                 //Obtener la informacion
                  if(rs.next()){
                  ID = rs.getInt("id_usuario");
                  txtNom.setText(rs.getString("nombre"));
@@ -371,27 +419,35 @@ int ID;
             }
         }
     }//GEN-LAST:event_btnBusActionPerformed
-
+//Inicializar componentes
     private void txtEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadActionPerformed
         
     }//GEN-LAST:event_txtEdadActionPerformed
-
+//Verificar el ingreso de numeros
     private void txtEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEdadKeyTyped
          char a = evt.getKeyChar();
        
        if(a < '0' || a > '9') evt.consume();
     }//GEN-LAST:event_txtEdadKeyTyped
-
+//Inicializar componentes
     private void txtTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelActionPerformed
       
         
     }//GEN-LAST:event_txtTelActionPerformed
-
+//Verificar el ingreso de numeros
     private void txtTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelKeyTyped
         char z = evt.getKeyChar();
         
         if(z < '0' || z > '9' ) evt.consume();
     }//GEN-LAST:event_txtTelKeyTyped
+//Select de puesto 
+    private void jcbPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbPActionPerformed
+//Select de sexo
+    private void jcbSexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbSexActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbSexActionPerformed
 
     /**
      * @param args the command line arguments
@@ -456,7 +512,8 @@ int ID;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
- public void Limpiar(){
+ //Funcion de limpiar las cajas de texto
+    public void Limpiar(){
     txtNom1.setText("");
     txtNom.setText("");
     txtApe.setText("");
