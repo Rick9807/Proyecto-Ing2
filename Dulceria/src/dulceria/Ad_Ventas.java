@@ -78,6 +78,7 @@ public class Ad_Ventas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dulceria/users_844.png"))); // NOI18N

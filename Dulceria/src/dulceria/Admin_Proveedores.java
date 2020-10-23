@@ -56,6 +56,7 @@ public class Admin_Proveedores extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/groups_people_people_1715.png"))); // NOI18N

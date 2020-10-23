@@ -59,6 +59,7 @@ public class Admim_Productos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnProduc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/businesspackage_additionalpackage_box_add_insert_negoci_2335.png"))); // NOI18N
