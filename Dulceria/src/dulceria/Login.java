@@ -100,7 +100,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 255));
         jLabel2.setText("Contraseña");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 290, 110, 20));
 
         jLabel3.setBackground(new java.awt.Color(255, 204, 255));
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N

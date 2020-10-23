@@ -51,11 +51,8 @@ public class Ad_Proveedores extends javax.swing.JFrame {
                 "select id_usuario from usuarios where usuario = '" + user1+ "'");
              ResultSet rs =pat.executeQuery();
                 if(rs.next()){
-                  
-                    //nombre_usuarios = rs.getString("id_usuario");
                     id= rs.getInt("id_usuario");
-                    //jLabel9.setText(id);
-                    }
+                }
             }catch(Exception e){
                 System.err.println("Error de Conexión en la interfaz de Proveedores");
          }
@@ -271,14 +268,11 @@ public class Ad_Proveedores extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 //Funcion para limpiar las cajas de texto
   public void Limpiar(){
-    
-                    
-                    txtNom.setText("");
-                    txtCorreo.setText("");
-                    txtTel.setText("");
-                    txtComp.setText("");
-    
-        }
+        txtNom.setText("");
+        txtCorreo.setText("");
+        txtTel.setText("");
+        txtComp.setText("");
+    }
 
 
 

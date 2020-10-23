@@ -67,17 +67,6 @@ public class Productos extends javax.swing.JFrame {
                 System.err.println("Error al buscar id_usuario");
          }
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
-////       jcmbP.removeAllItems();
-////       ArrayList<String> Lista = new ArrayList<String>();
-////     Lista =  NewConexion.llenarcombo();
-////     jcmbP.addItem(Lista);
-////     for(int w=0; w<Lista.size();w++){
-////     jcmbP.addItem(Lista);
-////     
-////     }
-//this.jcmbP.setModel(con.Ob_Comp());    
-      
     }
 
     /**

@@ -146,14 +146,7 @@ public class Emp_Usuarios_Busq extends javax.swing.JFrame {
     private void btnExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExActionPerformed
         dispose();
         //Verifica los permisos del usuario
-
-        if(Login.perm.equalsIgnoreCase("Jefe")){
-          //new Ad_Confg().setVisible(true);
-        }else{
-            //Retornar a pestaña anterior
-          new Empleados().setVisible(true);
-        } 
-        
+        new Empleados().setVisible(true);
     }//GEN-LAST:event_btnExActionPerformed
 
     /**

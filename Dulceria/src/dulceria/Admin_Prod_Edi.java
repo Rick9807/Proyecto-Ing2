@@ -251,8 +251,7 @@ int ID;
                        txtPre.setText(rs.getString("precio"));
                        txtSto.setText(rs.getString("stock"));
                        txtCom.setText(rs.getString("compania"));
-                       //txtDulce.setEditable(false);
-                       //btnSearch.setEnabled(false);
+                       
                        btnMod.setEnabled(true);
                        btnDelete.setEnabled(true);
                        txtNom.setEnabled(true);

@@ -49,25 +49,7 @@ public static String user_update = "";
         user = Login.user;
         setTitle("Clientes - Sesion de "+ user);
         
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); 
-        //Validar el acceso a la base de datos
-   try{
-       Connection cn = Conexion.conectar();
-       
-        PreparedStatement pat = cn.prepareStatement(
-            "SELECT MAX(id_cliente) AS id_cliente FROM clientes");
-             ResultSet rs = pat.executeQuery();
-                      if(rs.next()){                        
-                 //V = rs.getInt("id_cliente");           
-//System.out.println(V+1);
-                    }
-      
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"No se ha encontrado el id de las ventas " + V + " en la BD");
-        }
-    //ven= String.valueOf(V+1).toString();
-              //txtID.setText(ven);
-               
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);           
     }
     
     @SuppressWarnings("unchecked")
@@ -271,7 +253,6 @@ public static String user_update = "";
         tel = txtTel.getText().trim();
         //Validar campos vacios
         if(nom.equals("") || ape.equals("") || tel.equals("")){
-          //txtNom.setBackground(Color.WHITE);
             JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos");
         }else{
             //Validar el acceso a la base de datos y que los datos no se repitan
@@ -311,25 +292,13 @@ public static String user_update = "";
                 System.err.println("Error en validar el Cliente" + e);
                 JOptionPane.showMessageDialog(null," ERROR al comparar Cliente, contacte al administrador ");
              }
-        }
-        /*if(ape.equals("")){
-        
-            txtApe.setBackground(Color.WHITE);
-            
-        }
-        if(tel.equals("")){
-        
-            txtTel.setBackground(Color.WHITE);
-            
-        }*/
-    
-            
+        }     
     }//GEN-LAST:event_btnAddActionPerformed
 //Boton de salir
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
-        //Verifica lso permisos del usuario
+        //Verifica los permisos del usuario
         if(Login.perm.equalsIgnoreCase("Jefe")){
           new Ad_Ventas().setVisible(true);
         }else{
@@ -381,15 +350,6 @@ public static String user_update = "";
                 System.err.println("Error al actualizar Cliente" + e);
                 }
         }
-       /* if(Apellidos.equals("")){
-          validacion++;
-            JOptionPane.showMessageDialog(null, "El campo Apellidos esta vacio");
-            }
-        if(Telefono.equals("")){
-          validacion++;
-        JOptionPane.showMessageDialog(null, "El campo Télefono esta vacio");
-            }
-       */
     }//GEN-LAST:event_btnModActionPerformed
 //Boton de busqueda y comprobacion de registros de clientes
     private void btnBusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusActionPerformed
@@ -412,8 +372,6 @@ public static String user_update = "";
              //Verificar si existe
              if(rs.next()){
              ID = rs.getInt("id_cliente");
-            //vent= String.valueOf(ID).toString();
-              //txtID.setText(vent);
              txtNom.setText(rs.getString("nombre"));
              txtApe.setText(rs.getString("apellidos"));
              txtTel.setText(rs.getString("telefono"));
@@ -454,8 +412,6 @@ public static String user_update = "";
 
                 PreparedStatement pat = cn.prepareStatement(
                     "delete from clientes where nombre = '" + nombre+ "'");  
-                //ResultSet rs = pat.executeQuery();
-                //Corfirmacion de la eliminacion
                 if(JOptionPane.showConfirmDialog(this, "¿Esta seguro de borrar este cliente?") == 0){
                     pat.executeUpdate();
                     JOptionPane.showMessageDialog(null," Se ha eliminado exitosamente ");
@@ -467,14 +423,6 @@ public static String user_update = "";
                  JOptionPane.showMessageDialog(null," No se permite la eliminación del Cliente por restriccion de la BD"); 
             } 
         }
-        /*if(Apellidos.equals("")){
-          validacion++;
-            JOptionPane.showMessageDialog(null, "El campo Correo esta vacio");
-            }
-        if(Telefono.equals("")){
-          validacion++;
-        JOptionPane.showMessageDialog(null, "El campo Télefono esta vacio");
-            }*/
     }//GEN-LAST:event_btnAdd2ActionPerformed
 //Ver los registros de los clientes 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
@@ -548,7 +496,6 @@ public static String user_update = "";
 
     //Funcion de limpiar las cajas de texto
    public void Limpiar(){
-        //txtID.setText("");
         txtbs.setText("");
         txtNom.setText("");
         txtApe.setText("");
