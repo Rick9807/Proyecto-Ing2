@@ -130,7 +130,7 @@ public class Admin_Proveedores extends javax.swing.JFrame {
         jLabel5.setText("Proveedores");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 280, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoAdmin.jpeg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoJefe.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 451));
 
         pack();

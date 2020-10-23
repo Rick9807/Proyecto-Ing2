@@ -188,7 +188,7 @@ public static int Sesion_usuario, Id;
         });
         getContentPane().add(btnBs, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 120, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoAdmin.jpeg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoJefe.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 448));
 
         pack();

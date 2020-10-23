@@ -103,7 +103,7 @@ public class Infomacion extends javax.swing.JFrame {
         });
         getContentPane().add(btnE, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 120, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoAdmin.jpeg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoComodin.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 480));
 
         pack();

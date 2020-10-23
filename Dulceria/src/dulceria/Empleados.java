@@ -1,4 +1,17 @@
 /*
+MANTENIMIENTO DE SOFTWARE 1
+Equipo 5 Ingenieria de software II
+Fecha de la ultima modificacion: 31 de octubre de 2020
+Por:
+Murillo Rivas Patricia Montserrat - patricia.murillo7467@alumnos.udg.mx
+Mares Guzmán Jesús Alejandro - jesus.mares5041@alumnos.udg.mx
+Ramírez Guzmán Ricardo -ricardo.guzman7966@alumnos.udg.mx
+Moncayo Mendoza Axel - Red18.21uchiha@gmail.com
+*/
+//Pestaña de empleados
+///Declaracion de librerias a usar
+
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -78,6 +91,9 @@ public class Empleados extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/log_logout_door_1563.png"))); // NOI18N
+        btnExit.setBorder(null);
+        btnExit.setContentAreaFilled(false);
+        btnExit.setFocusPainted(false);
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -86,6 +102,9 @@ public class Empleados extends javax.swing.JFrame {
         getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 120, 120));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/contactlist_theuser_802.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -94,6 +113,9 @@ public class Empleados extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 120, 120));
 
         btnCongf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iEngrenages_24182.png"))); // NOI18N
+        btnCongf.setBorder(null);
+        btnCongf.setContentAreaFilled(false);
+        btnCongf.setFocusPainted(false);
         btnCongf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCongfActionPerformed(evt);
@@ -102,6 +124,10 @@ public class Empleados extends javax.swing.JFrame {
         getContentPane().add(btnCongf, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 120, 120));
 
         btnVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cashier_icon-icons.com_53629.png"))); // NOI18N
+        btnVentas.setBorder(null);
+        btnVentas.setBorderPainted(false);
+        btnVentas.setContentAreaFilled(false);
+        btnVentas.setFocusPainted(false);
         btnVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentasActionPerformed(evt);
@@ -110,6 +136,9 @@ public class Empleados extends javax.swing.JFrame {
         getContentPane().add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 120, 120));
 
         btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/if-01-halloweensweetscandytricktreat-2660267_86899.png"))); // NOI18N
+        btnProductos.setBorder(null);
+        btnProductos.setContentAreaFilled(false);
+        btnProductos.setFocusPainted(false);
         btnProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProductosActionPerformed(evt);
@@ -118,6 +147,9 @@ public class Empleados extends javax.swing.JFrame {
         getContentPane().add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 120, 120));
 
         btnEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/business_man_usersearch_thesearch_theclient_2356.png"))); // NOI18N
+        btnEmpl.setBorder(null);
+        btnEmpl.setContentAreaFilled(false);
+        btnEmpl.setFocusPainted(false);
         btnEmpl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEmplActionPerformed(evt);
@@ -161,7 +193,7 @@ public class Empleados extends javax.swing.JFrame {
         jLabel8.setText("Cerrar Sesión");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 380, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoAdmin.jpeg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoEmpleado.jpg"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(626, 450));
         jLabel1.setMinimumSize(new java.awt.Dimension(626, 450));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 450));

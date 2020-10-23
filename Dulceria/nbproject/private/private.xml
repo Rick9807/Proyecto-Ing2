@@ -2,6 +2,33 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Registro_Ventas.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Ad_Ventas.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Ad_Confg.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Confi_Admin.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Emp_Usuarios_Busq.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Ad_Proveedores.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Empleados_Prod_Edi.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Admin_Prov_Edi.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/EmAd_Confg1.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Infomacion.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Administrador.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Ad_Productos_Mostrar.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Usuarios.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Ad_Clientes.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Empleado_Ad_Ventas.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Ventas1.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Ad_Pro_Mostrar.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Admin_Empleados.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Usuarios_Busqueda.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Admin_Proveedores.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Empleados.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Productos.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Admim_Productos.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Empleados_Productos.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Admin_Editar.java</file>
+            <file>file:/D:/CUCEI/QUINTO%20SEMESTRE/INGENIERIA%20DE%20SOFTWARE%20II/ProyectoGitHub/Proyecto-Ing2/Dulceria/src/dulceria/Admin_Prod_Edi.java</file>
+        </group>
     </open-files>
 </project-private>
