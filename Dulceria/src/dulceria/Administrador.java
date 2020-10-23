@@ -186,7 +186,7 @@ public class Administrador extends javax.swing.JFrame {
         jlabelUser.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jlabelUser.setForeground(new java.awt.Color(255, 255, 255));
         jlabelUser.setText("jLabel7");
-        getContentPane().add(jlabelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
+        getContentPane().add(jlabelUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 440, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));

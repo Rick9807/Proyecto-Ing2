@@ -49,7 +49,7 @@ public class Ad_Ventas extends javax.swing.JFrame {
 
                 if(rs.next()){
                     nombre_usuario = rs.getString("nombre");
-                    jLabel2.setText("Jefe " + nombre_usuario);
+                    jLabel2.setText(nombre_usuario);
                     }
             }catch(Exception e){
                 System.err.println("Error de Conexión en la interfaz Administrador");
@@ -134,7 +134,7 @@ public class Ad_Ventas extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 170, 20));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 200, 20));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
