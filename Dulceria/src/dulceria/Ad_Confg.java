@@ -162,7 +162,7 @@ int ID;
       if(Desktop.isDesktopSupported()){
           //Verifica que se abre bien el documento
         try{
-        File my = new File(new File("").getAbsolutePath() + "/src/Ayuda_Del_Sistema/Ayuda del sistema.pdf");
+        File my = new File(new File("").getAbsolutePath() + "/src/Ayuda_Del_Sistema/Ayuda del sistema 2.0.pdf");
         Desktop.getDesktop().open(my);
       
         
